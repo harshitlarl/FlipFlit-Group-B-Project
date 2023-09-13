@@ -1,10 +1,17 @@
+/**
+ * 
+ */
 package com.flipkart.business;
 
-public class GymOwnerService {
-	void addGymWithSlots() {
-		
-	}
-	List<Gym> viewMyGyms(){
-		
-	}
+import java.util.List;
+
+import com.flipkart.bean.Bookings;
+import com.flipkart.bean.Gym;
+
+/**
+ * @author bhavya.khandelwal
+ */
+public interface GymOwnerService {
+	void addGymWithSlots();
+	List<Gym> viewMyGyms();
 }

@@ -1,7 +1,13 @@
+/**
+ * 
+ */
 package com.flipkart.business;
 
-public class BookingService {
-	Gym getGymWithBookingId(String bookingId) {
-		
-	}
+import com.flipkart.bean.Gym;
+
+/**
+ * @author bhavya.khandelwal
+ */
+public interface BookingService {
+	Gym getGymWithBookingId(String bookingId);
 }
