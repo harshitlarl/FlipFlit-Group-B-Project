@@ -1,5 +1,7 @@
 package com.flipkart.bean;
 
+import java.util.List;
+
 public class GymOwner {
 	private int ownerId;
 	private String ownerEmail;
@@ -7,7 +9,15 @@ public class GymOwner {
 	private String phoneNo;
 	private String nationalId;
 	private String GST;
+	private List<Gym> gyms;
 
+	public List<Gym> getGyms() {
+		return gyms;
+	}
+
+	public void setGyms(List<Gym> gyms) {
+		this.gyms = gyms;
+	}
 
 	private String verificationStatus;
 	public int getOwnerId() {
