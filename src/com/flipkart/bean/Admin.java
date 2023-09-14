@@ -1,7 +1,6 @@
 package com.flipkart.bean;
 
 public class Admin {
-	//@methods
 	private int adminId;
 	private String password;
 	
