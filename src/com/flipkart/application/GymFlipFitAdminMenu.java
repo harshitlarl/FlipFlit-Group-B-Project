@@ -110,6 +110,7 @@ public class GymFlipFitAdminMenu {
                     "4. Verified Gym owner list(4)" +
                     "5. Verification failed gym list(5)" +
                     "6. Verification failed gym owner list(6)" +
+
                     "Select one option from the menu: \n " );
 
             switch (caseNum){
