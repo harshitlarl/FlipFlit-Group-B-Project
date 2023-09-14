@@ -3,7 +3,7 @@ package com.flipkart.bean;
 public class User {
 
 	private String userName;
-	private int phNo;
+	private int phoneNumber;
 	private String address;
 	private String location;
 	private String email;
@@ -21,11 +21,11 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhNo() {
-		return phNo;
+	public int getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhNo(int phNo) {
-		this.phNo = phNo;
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	public String getAddress() {
 		return address;
