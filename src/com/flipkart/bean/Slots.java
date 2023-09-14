@@ -6,7 +6,7 @@ public class Slots {
 	private int startTime;
 	private int seatCount;
 	
-	Slots(int slotsId, int startTime, int seatCount){
+	public Slots(int slotsId, int startTime, int seatCount){
 		this.setSlotsId(slotsId);
 		this.setStartTime(startTime);
 		this.setSeatCount(seatCount);

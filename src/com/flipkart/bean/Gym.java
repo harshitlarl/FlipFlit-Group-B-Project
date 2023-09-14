@@ -1,11 +1,24 @@
 package com.flipkart.bean;
 
+import java.util.List;
+
 public class Gym {
 	
 	private int gymId;
 	private String gymName;
     private String gymAddress;
     private String location;
+	private List<Slots> slots;
+
+	public List<Slots> getSlots() {
+		return slots;
+	}
+
+	public void setSlots(List<Slots> slots) {
+		this.slots = slots;
+	}
+
+
 
     public int getGymId() {
 		return gymId;
