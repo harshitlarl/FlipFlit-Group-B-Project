@@ -14,4 +14,8 @@ import com.flipkart.bean.Gym;
 public interface GymOwnerService {
 	void addGymWithSlots();
 	List<Gym> viewMyGyms();
+
+	boolean validateLogin(String email, String password);
+
+	void createGymOwner();
 }
