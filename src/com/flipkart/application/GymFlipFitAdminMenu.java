@@ -1,7 +1,9 @@
 package com.flipkart.application;
 
 
+import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 
@@ -104,13 +106,14 @@ public class GymFlipFitAdminMenu {
             System.out.println("Credentials are verified");
 
             Scanner scanner = new Scanner(System.in);
-            int caseNum = scanner.nextInt("1. Pending Gym verification list(1)" +
+            System.out.println("1. Pending Gym verification list(1)" +
                     "2. Pending Gym owner verification list(2)" +
                     "3. Verified Gym list(3)" +
                     "4. Verified Gym owner list(4)" +
                     "5. Verification failed gym list(5)" +
                     "6. Verification failed gym owner list(6)" +
-                    "Select one option from the menu: \n " );
+                    "Select one option from the menu: \n ");
+            int caseNum = scanner.nextInt( );
 
             switch (caseNum){
                 case 1:
