@@ -112,7 +112,26 @@ public class GymFlipFitAdminMenu {
                     "6. Verification failed gym owner list(6)" +
                     "Select one option from the menu: \n " );
 
-
+            switch (caseNum){
+                case 1:
+                    System.out.println(verificationPendingGym());
+                    break;
+                case 2:
+                    System.out.println(verificationPendingGymOwner());
+                    break;
+                case 3:
+                    System.out.println(verifiedGym());
+                    break;
+                case 4:
+                    System.out.println(verifiedGymOwner());
+                    break;
+                case 5:
+                    System.out.println(verificationFailedGym());
+                    break;
+                case 6:
+                    System.out.println(verificationFailedGymOwner());
+                    break;
+            }
 
             return true;
         }
