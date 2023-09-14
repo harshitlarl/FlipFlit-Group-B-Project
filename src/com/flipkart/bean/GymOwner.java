@@ -6,6 +6,9 @@ public class GymOwner {
 	private String password;
 	private String phoneNo;
 	private String nationalId;
+	private String GST;
+
+
 	private String verificationStatus;
 	public int getOwnerId() {
 		return ownerId;
@@ -43,6 +46,7 @@ public class GymOwner {
 	public void setVerificationStatus(String verificationStatus) {
 		this.verificationStatus = verificationStatus;
 	}
-	
-	
+	public String getGST() { return GST; }
+	public void setGST(String GST) { this.GST = GST; }
+
 }
