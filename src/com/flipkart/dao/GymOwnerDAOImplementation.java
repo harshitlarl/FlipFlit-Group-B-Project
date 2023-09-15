@@ -10,6 +10,7 @@ import java.sql.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
@@ -124,16 +125,19 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
     }
 
     @Override
-    public List<Gym> viewGymSlots(String gymOwnerID)  {
-        Statement statement = null;
+    public List<Gym> viewGymSlots(String gymOwnerID) {
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Gym> gyms = null;
+        List<Gym> gyms = new ArrayList<>();
+
         try {
-            String sqlQuery = "SELECT * FROM gym WHERE ownerId= " + gymOwnerID;
-            statement = conn.createStatement();
-            resultSet = statement.executeQuery(sqlQuery);
+            String sqlQuery = "SELECT * FROM gyms WHERE ownerId=?";
+            preparedStatement = conn.prepareStatement(sqlQuery);
+            preparedStatement.setString(1, gymOwnerID);
+            resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = resultSet.getInt("gymId");
                 String gymAddress = resultSet.getString("gymAddress");
                 String location = resultSet.getString("location");
                 String gymName = resultSet.getString("gymName");
@@ -148,20 +152,59 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
                 List<Slots> slots = getGymSlotsWithGymId(id);
                 gym.setSlots(slots);
-
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+//        finally {
+//            try {
+//                if (resultSet != null) resultSet.close();
+//                if (preparedStatement != null) preparedStatement.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace(); // Handle or log the exception
+//            }
+//        }
 
         return gyms;
     }
+//    public List<Gym> viewGymSlots(String gymOwnerID)  {
+//        Statement statement = null;
+//        ResultSet resultSet = null;
+//        List<Gym> gyms = null;
+//        try {
+//            String sqlQuery = "SELECT * FROM gyms WHERE email= " + gymOwnerID;
+//            statement = conn.createStatement();
+//            resultSet = statement.executeQuery(sqlQuery);
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                String gymAddress = resultSet.getString("gymAddress");
+//                String location = resultSet.getString("location");
+//                String gymName = resultSet.getString("gymName");
+//                String status = resultSet.getString("status");
+//                Gym gym = new Gym();
+//                gym.setGymName(gymName);
+//                gym.setGymAddress(gymAddress);
+//                gym.setOwnerId(gymOwnerID);
+//                gym.setLocation(location);
+//                gym.setStatus(status);
+//                gyms.add(gym);
+//
+////                List<Slots> slots = getGymSlotsWithGymId(id);
+////                gym.setSlots(slots);
+//
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//
+//        return gyms;
+//    }
 
     public List<Slots> getGymSlotsWithGymId(int id){
         Statement statement = null;
         ResultSet resultSet = null;
-        List<Slots> slotList = null;
+        List<Slots> slotList = new ArrayList<>();
         try {
             String sqlQuery = "SELECT * FROM slots WHERE gymId= " + id;
             statement = conn.createStatement();
@@ -169,7 +212,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             while (resultSet.next()) {
 
                 int startTime = resultSet.getInt("startTime");
-                int seats = resultSet.getInt("seats");
+                int seats = resultSet.getInt("seatCount");
                 Slots slots = new Slots(1,startTime,seats);
 
                 slotList.add(slots);
