@@ -29,11 +29,12 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
-        String insertQuery = "INSERT INTO gym (address, location, name, status, ownerid) VALUES (?, ?, ?, ?, ?)";
+//        String insertQuery = "INSERT INTO gyms (address, location, name, status, ownerid) VALUES (?, ?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO gyms (gymAddress,location,gymName,status,ownerId ) VALUES(?,?,?,?,?)";
         int id = 0;
         try {
             statement = conn.createStatement();
-            resultSet = statement.executeQuery(insertQuery);
+//            resultSet = statement.executeQuery(insertQuery);
             preparedStatement =  conn.prepareStatement(insertQuery, statement.RETURN_GENERATED_KEYS);
 
             // 5. Set values for the placeholders in the prepared statement
@@ -42,6 +43,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             preparedStatement.setString(2, gym.getLocation());
             preparedStatement.setString(3, gym.getGymName());
             preparedStatement.setString(4, gym.getStatus());
+            preparedStatement.setString(5, gym.getOwnerId());
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -61,17 +63,17 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         } catch (SQLException e) {
 
             throw new RuntimeException(e);
-        } finally {
-            // 7. Close the resources
-            try {
-                if (preparedStatement != null) preparedStatement.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
+//        finally {
+        // 7. Close the resources
+//            try {
+//                if (preparedStatement != null) preparedStatement.close();
+//                if (conn != null) conn.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
         insertSlots(gym.getSlots(),id);
-
 
     }
 
@@ -81,11 +83,11 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
         for( Slots slot: slots){
-            String insertQuery = "INSERT INTO slots (starttime, seats, gymid) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO slots (startTime, seatCount, gymId) VALUES (?, ?, ?)";
 
             try {
                 statement = conn.createStatement();
-                resultSet = statement.executeQuery(insertQuery);
+//                resultSet = statement.executeQuery(insertQuery);
                 preparedStatement =  conn.prepareStatement(insertQuery);
 
                 // 5. Set values for the placeholders in the prepared statement
@@ -106,21 +108,20 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             } catch (SQLException e) {
 
                 throw new RuntimeException(e);
-            } finally {
-                // 7. Close the resources
-                try {
-                    if (preparedStatement != null) preparedStatement.close();
-                    if (conn != null) conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
             }
+//            finally {
+            // 7. Close the resources
+//                try {
+//                    if (preparedStatement != null) preparedStatement.close();
+//                    if (conn != null) conn.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
         }
 
 
     }
-
-
 
     @Override
     public List<Gym> viewGymSlots(String gymOwnerID)  {
