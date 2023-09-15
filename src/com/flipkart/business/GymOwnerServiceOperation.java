@@ -5,50 +5,23 @@ import java.util.*;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
+import com.flipkart.dao.GymOwnerDAOImplementation;
+import com.flipkart.dao.GymOwnerDaoInterface;
 
 
 public class GymOwnerServiceOperation implements GymOwnerService{
 
 	HashMap<String,GymOwner> gymOwners = new HashMap();
+	GymOwnerDaoInterface gymOwnerDaoInterface = new GymOwnerDAOImplementation();
 	Scanner obj = new Scanner(System.in);
 	int id = 0;
 	@Override
-	public void addGymWithSlots(String email) {
-		Gym gym = new Gym();
-		gym.setGymId(1);
-		System.out.println("Enter the following info:");
-		System.out.println("\nEnter gym name:");
-		String gymName = obj.nextLine();
-		System.out.println("\nGym Address:");
-		String address = obj.nextLine();
-		System.out.println("\nGym Location:");
-		String location = obj.nextLine();
-
-		gym.setGymAddress(address);
-		gym.setLocation(location);
-		gym.setGymName(gymName);
-		List<Slots> slots = new ArrayList<>();
-		System.out.println("\nHow many slots to be entered?");
-		int slotNo = Integer.parseInt(obj.nextLine());
-		int x = 1;
-		while(slotNo != 0){
-			System.out.println("Add slot no. " + x++ + "\n");
-			System.out.println("\nEnter start time:");
-			int startTime = Integer.parseInt(obj.nextLine());
-			System.out.println("\nEnter available seats:");
-			int number = Integer.parseInt(obj.nextLine());
-			Slots slot = new Slots(x,startTime,number);
-			slots.add(slot);
-			slotNo--;
-		}
-		gym.setSlots(slots);
-		List<Gym> currentGyms = gymOwners.get(email).getGyms();
-		currentGyms.add(gym);
-		gymOwners.get(email).setGyms(currentGyms);
+	public void addGymWithSlots(Gym gym) {
+		gymOwnerDaoInterface.addGym(gym);
 	}
 	@Override
 	public List<Gym> viewMyGyms(String userId){
-		return gymOwners.get(userId).getGyms();
+		return gymOwnerDaoInterface.viewGymSlots(userId);
 	}
 
 	@Override

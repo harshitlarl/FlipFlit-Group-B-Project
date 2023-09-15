@@ -10,6 +10,26 @@ public class Gym {
     private String location;
 	private List<Slots> slots;
 
+	private String ownerId;
+
+	public String getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	private String Status;
+
 	public List<Slots> getSlots() {
 		return slots;
 	}
