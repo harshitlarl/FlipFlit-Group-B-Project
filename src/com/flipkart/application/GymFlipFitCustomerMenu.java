@@ -33,22 +33,35 @@ public class GymFlipFitCustomerMenu {
                         System.out.println(viewAllGymswithSlots());
                         break;
                     case 2:
-                        System.out.println();
-                        bookSlot();
+                        System.out.println("Enter the following:");
+                        System.out.println("Gym ID");
+                        int gymId = Integer.parseInt(obj.nextLine());
+//                        System.out.println("Slot Date (only date, no month)");
+//                        int date = Integer.parseInt(obj.nextLine());
+                        System.out.println("Slot Time");
+                        int time = Integer.parseInt(obj.nextLine());
+
+                        if(bookSlot(gymId,time,username)){
+                            System.out.println("Booked Successfully");
+                        }else{
+                            System.out.println("Booking Unsuccessful");
+                        }
                         break;
                     case 3:
                         Scanner sc=new Scanner(System.in);
-                        int slotId=sc.nextInt();
-                        cancelSlot(slotId);
+                        System.out.println(viewAllBookings(username));
+                        System.out.println("Enter Booking ID");
+                        int bookingId=sc.nextInt();
+                        cancelSlot(bookingId);
                         break;
                     case 4:
                         System.out.println("My Bookings");
-                        int userId=user.getuserId();
-                        System.out.println(viewAllBookings(userId));
+
+                        System.out.println(viewAllBookings(username));
                         break;
                     case 5:
-                        System.out.println("Gyms near me");
-                        String location=user.getLocation();
+
+                        String location="bangalore";
                         System.out.println(viewAllGymsByArea(location));
                         break;
                     case 6:
@@ -68,14 +81,14 @@ public class GymFlipFitCustomerMenu {
         List<Gym> gymList=userServiceOperation.getAllGymsWithSlots();
         return gymList;
     }
-    public boolean bookSlot(){
-        return userServiceOperation.bookSlots();
+    public boolean bookSlot(int gymId, int time,String email){
+        return userServiceOperation.bookSlots(gymId,time,email);
     }
-    public boolean cancelSlot(int slotId){
+    public boolean cancelSlot(int bookingId){
         System.out.println("Slot Cancelled");
-        return userServiceOperation.cancelSlots(slotId);
+        return userServiceOperation.cancelSlots(bookingId);
     }
-    public List<Bookings> viewAllBookings(int userid){
+    public List<Bookings> viewAllBookings(String userid){
         System.out.println("My Bookings");
         List<Bookings> myBookings = userServiceOperation.getAllBookings(userid);
         return myBookings;

@@ -16,22 +16,20 @@ import com.flipkart.dao.CustomerDAOInterface;
 public class UserServiceOperations implements UserServices {
 
 	CustomerDAOInterface customerDAOInterface = new CustomerDAOImplementation();
+
+
 	@Override
-	public boolean bookSlots() {
+	public boolean cancelSlots(int bookingId) {
 		// TODO Auto-generated method stub
-		return false;
+
+		return customerDAOInterface.cancelBooking(bookingId);
 	}
 
 	@Override
-	public boolean cancelSlots(int slotId) {
+	public List<Bookings> getAllBookings(String userId) {
 		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public List<Bookings> getAllBookings(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return customerDAOInterface.getAllBookingByUserID( userId);
 	}
 
 	@Override
@@ -44,8 +42,14 @@ public class UserServiceOperations implements UserServices {
 	@Override
 	public List<Gym> getAllGymsByArea(String area) {
 		// TODO Auto-generated method stub
-
+		customerDAOInterface.getAllGymsByArea();
 		return null;
+	}
+
+	@Override
+	public boolean bookSlots(int gymId, int time, String email) {
+		boolean x = customerDAOInterface.bookSlot(gymId,time,email);
+		return false;
 	}
 
 }

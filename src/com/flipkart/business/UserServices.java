@@ -12,10 +12,11 @@ import com.flipkart.bean.Gym;
  * @author avinash.parashar
  */
 public interface UserServices {
-	boolean bookSlots();
+
 	boolean cancelSlots(int slotId);
-	List<Bookings> getAllBookings(int userId);
+	List<Bookings> getAllBookings(String userId);
 	List<Gym> getAllGymsWithSlots();
 	List<Gym> getAllGymsByArea(String area);
-	
+
+	boolean bookSlots(int gymId, int time, String email);
 }
