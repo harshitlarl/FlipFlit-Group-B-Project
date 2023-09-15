@@ -123,35 +123,59 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
 
     @Override
-    public  void viewGymSlots(String gymOwnerID) throws SQLException {
+    public List<Gym> viewGymSlots(String gymOwnerID)  {
         Statement statement = null;
         ResultSet resultSet = null;
+        List<Gym> gyms = null;
+        try {
+            String sqlQuery = "SELECT * FROM gym WHERE ownerId= " + gymOwnerID;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String gymAddress = resultSet.getString("gymAddress");
+                String location = resultSet.getString("location");
+                String gymName = resultSet.getString("gymName");
+                String status = resultSet.getString("status");
+                Gym gym = new Gym();
+                gym.setGymName(gymName);
+                gym.setGymAddress(gymAddress);
+                gym.setOwnerId(gymOwnerID);
+                gym.setLocation(location);
+                gym.setStatus(status);
+                gyms.add(gym);
 
-        statement = conn.createStatement();
+                List<Slots> slots = getGymSlotsWithGymId(id);
+                gym.setSlots(slots);
 
-        String sqlQuery = "SELECT * FROM gym_owner";
-        resultSet = statement.executeQuery(sqlQuery);
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            String email = resultSet.getString("email");
-            String name = resultSet.getString("name");
-            String password = resultSet.getString("password");
-            String phoneNumber = resultSet.getString("phone_number");
-            String pancard = resultSet.getString("pancard");
-            String aadhar = resultSet.getString("aadhar");
-            String gst = resultSet.getString("gst");
-
-            // Print the data or perform any other operations you need
-            System.out.println("ID: " + id);
-            System.out.println("Email: " + email);
-            System.out.println("Name: " + name);
-            System.out.println("Password: " + password);
-            System.out.println("Phone Number: " + phoneNumber);
-            System.out.println("Pancard: " + pancard);
-            System.out.println("Aadhar: " + aadhar);
-            System.out.println("GST: " + gst);
-            System.out.println("---------------------------------");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
+
+        return gyms;
+    }
+
+    public List<Slots> getGymSlotsWithGymId(int id){
+        Statement statement = null;
+        ResultSet resultSet = null;
+        List<Slots> slotList = null;
+        try {
+            String sqlQuery = "SELECT * FROM slots WHERE gymId= " + id;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+
+                int startTime = resultSet.getInt("startTime");
+                int seats = resultSet.getInt("seats");
+                Slots slots = new Slots(1,startTime,seats);
+
+                slotList.add(slots);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return slotList;
     }
 }

@@ -21,7 +21,7 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 	}
 	@Override
 	public List<Gym> viewMyGyms(String userId){
-		return gymOwners.get(userId).getGyms();
+		return gymOwnerDaoInterface.viewGymSlots(userId);
 	}
 
 	@Override

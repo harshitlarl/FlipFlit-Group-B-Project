@@ -9,7 +9,7 @@ import java.util.List;
 public interface GymOwnerDaoInterface {
     void insertSlots(List<Slots> slots, int gymId);
 
-    public void viewGymSlots(String gymOwnerID) throws SQLException;
+    public List<Gym> viewGymSlots(String gymOwnerID);
 
     void addGym(Gym gym);
 }
