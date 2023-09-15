@@ -1,6 +1,7 @@
 package com.flipkart.bean;
 
 public class User {
+	private int userId;
 
 	private String userName;
 	private int phoneNumber;
@@ -8,7 +9,13 @@ public class User {
 	private String location;
 	private String email;
 	private String password;
-	
+
+	public int getuserId() {
+		return userId;
+	}
+	public void setuserId(int usrId) {
+		this.userId = userId;
+	}
 	public String getUserName() {
 		return userName;
 	}
