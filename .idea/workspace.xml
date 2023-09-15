@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a120da7-1c8b-4c5c-92b9-8c1f4c75b9df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java" afterDir="false" />
+    <list default="true" id="0e127498-d81b-411a-b5ba-7f416f9deb5c" name="Changes" comment="Added GymOwner Login and Registration">
+      <change afterPath="$PROJECT_DIR$/src/com/flipkart/dao/CustomerDAOImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitCustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitCustomerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/UserServiceOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/UserServiceOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/CutomerDAOImplementation.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +22,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
@@ -28,113 +34,34 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "harshitlarl"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="recentNewPullRequestHead">
-      <RepoCoordinatesHolder>
-        <option name="owner" value="harshitlarl" />
-        <option name="repository" value="JEDI-2.0-Group-B-Java-Project-POS" />
-      </RepoCoordinatesHolder>
-    </option>
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="a6a1a6be-9da5-4191-a9e2-6145828cf47d" />
-        <option name="url" value="https://github.com/harshitlarl/JEDI-2.0-Group-B-Java-Project-POS.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
+  "associatedIndex": 3
 }]]></component>
-  <component name="ProjectId" id="2VNyCRyuqNEOO15rvJ0AqydPgw5" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2VQXcOTPTRcmSrc8ScGVtQK708c" />
   <component name="ProjectViewState">
-    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "bhavya-dev",
-    "jdk.selected.JAVA_MODULE": "corretto-11",
+    "jdk.selected.JAVA_MODULE": "11",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.GymFlipFitApplication">
-    <configuration name="DatabaseConnector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.dao.DatabaseConnector" />
-      <module name="DatabaseConnection" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GymFlipFitApplication" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.application.GymFlipFitApplication" />
-      <module name="Flipfit" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.application.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GymOwnerDAOImplementation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.dao.GymOwnerDAOImplementation" />
-      <module name="DatabaseConnection" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="InsertanyData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flipkart.dao.InsertanyData" />
-      <module name="DatabaseConnection" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flipkart.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="DatabaseConnection" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,46 +73,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.GymFlipFitApplication" />
-        <item itemvalue="Application.GymOwnerDAOImplementation" />
-        <item itemvalue="Application.DatabaseConnector" />
-        <item itemvalue="Application.InsertanyData" />
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3a120da7-1c8b-4c5c-92b9-8c1f4c75b9df" name="Changes" comment="" />
-      <created>1694690705113</created>
+      <changelist id="0e127498-d81b-411a-b5ba-7f416f9deb5c" name="Changes" comment="" />
+      <created>1694769356617</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1694690705113</updated>
+      <updated>1694769356617</updated>
+      <workItem from="1694769358661" duration="3029000" />
     </task>
+    <task id="LOCAL-00001" summary="Added GymOwner Login and Registration">
+      <option name="closed" value="true" />
+      <created>1694771000672</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694771000672</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added GymOwner Login and Registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GymOwner Login and Registration" />
   </component>
 </project>

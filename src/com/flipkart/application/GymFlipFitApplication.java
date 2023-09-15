@@ -53,7 +53,18 @@ public class GymFlipFitApplication {
 
                     break;
                 case 2 :
-                    owner.createGymOwner();
+                    System.out.println("1. Register as a Customer");
+                    System.out.println("2. Register as a Gym Owner");
+                    System.out.println("3. Back");
+                    int k = Integer.parseInt(obj.nextLine());
+                    switch(k){
+                        case 1:
+                            break;
+                        case 2:
+                            owner.createGymOwner();
+                        default:
+                            break;
+                    }
                     break;
                 case 3 :
                     System.out.println("Call to update password in the customer menu");

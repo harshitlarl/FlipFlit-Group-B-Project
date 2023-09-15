@@ -33,6 +33,7 @@ public class GymFlipFitCustomerMenu {
                         System.out.println(viewAllGymswithSlots());
                         break;
                     case 2:
+                        System.out.println();
                         bookSlot();
                         break;
                     case 3:
