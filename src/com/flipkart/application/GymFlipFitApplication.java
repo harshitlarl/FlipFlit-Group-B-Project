@@ -13,7 +13,7 @@ public class GymFlipFitApplication {
         boolean exitFlag = false;
         while(true) {
             System.out.println("1. Login");
-            System.out.println("2. Registration of Gymowner");
+            System.out.println("2. Registration");
             System.out.println("3. Update Password");
             System.out.println("4. Exit");
             int x = Integer.parseInt(obj.nextLine());

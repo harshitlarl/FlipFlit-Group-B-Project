@@ -26,37 +26,14 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 
 	@Override
 	public boolean validateLogin(String email, String password) {
-		if(!gymOwners.containsKey(email)) return false;
-        return Objects.equals(gymOwners.get(email).getPassword(), password);
+		if(gymOwnerDaoInterface.validateLogin(email,password)) return true;
+        return false;
     }
 
 	@Override
-	public void createGymOwner(){
+	public void createGymOwner(GymOwner gymOwner){
+		gymOwnerDaoInterface.newGymOwner(gymOwner);
 
-
-		System.out.println("Enter the following info:");
-		System.out.println("\nYour email: ");
-		String ownerEmail = obj.nextLine();
-		System.out.println("\nEnter a password: ");
-		String password = obj.nextLine();
-		System.out.println("\nPhone number: ");
-		String phoneNo = obj.nextLine();
-		System.out.println("\nNation ID/ Aadhar Number: ");
-		String nationalId = obj.nextLine();
-		System.out.println("\nGST: ");
-		String GST = obj.nextLine();
-
-		GymOwner gymOwner = new GymOwner();
-		List<Gym> emptyGymList = new ArrayList<>();
-		gymOwner.setOwnerEmail(ownerEmail);
-		gymOwner.setOwnerId(id++);
-		gymOwner.setGST(GST);
-		gymOwner.setPassword(password);
-		gymOwner.setNationalId(nationalId);
-		gymOwner.setPhoneNo(phoneNo);
-		gymOwner.setGyms(emptyGymList);
-
-		gymOwners.put(ownerEmail,gymOwner);
 	}
 
 }

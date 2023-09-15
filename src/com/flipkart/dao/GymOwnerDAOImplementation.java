@@ -1,6 +1,7 @@
 package com.flipkart.dao;
 
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
 
 //import com.flipkart.dao.GymOwnerDAOImplementation;
@@ -75,6 +76,63 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 //            }
 //        }
         insertSlots(gym.getSlots(),id);
+
+    }
+
+    @Override
+    public void newGymOwner(GymOwner gymOwner) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        String insertQuery = "INSERT INTO gym_owner (email,name, password, phone_number, pancard, aadhar, gst,status ) VALUES(?,?,?,?,?,?,?)";
+
+        try {
+            statement = conn.createStatement();
+//            resultSet = statement.executeQuery(insertQuery);
+            preparedStatement =  conn.prepareStatement(insertQuery);
+
+            // 5. Set values for the placeholders in the prepared statement
+
+            preparedStatement.setString(1, gymOwner.getOwnerEmail());
+            preparedStatement.setString(2, gymOwner.getPassword());
+            preparedStatement.setString(3, gymOwner.getPhoneNo());
+            preparedStatement.setString(4, gymOwner.getPAN());
+            preparedStatement.setString(5, gymOwner.getNationalId());
+            preparedStatement.setString(6, gymOwner.getGST());
+            preparedStatement.setString(7, gymOwner.getStatus());
+
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                System.out.println("Record inserted successfully!");
+            } else {
+                System.out.println("Failed to insert the record.");
+                return ;
+            }
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean validateLogin(String email, String password) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        List<Slots> slotList = new ArrayList<>();
+        String password2 = "-";
+        try {
+            String sqlQuery = "SELECT * FROM slots WHERE email= " + email;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                password2 = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return password2.equals(password);
 
     }
 

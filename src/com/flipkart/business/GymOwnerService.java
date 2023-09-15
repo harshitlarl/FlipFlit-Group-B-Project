@@ -6,6 +6,7 @@ package com.flipkart.business;
 import java.util.List;
 
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymOwner;
 
 /**
  * @author bhavya.khandelwal
@@ -16,5 +17,5 @@ public interface GymOwnerService {
 
 	boolean validateLogin(String email, String password);
 
-	void createGymOwner();
+	void createGymOwner(GymOwner gymOwner);
 }

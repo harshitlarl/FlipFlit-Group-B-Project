@@ -1,6 +1,7 @@
 package com.flipkart.application;
 
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
 import com.flipkart.business.GymOwnerService;
 import com.flipkart.business.GymOwnerServiceOperation;
@@ -74,7 +75,38 @@ public class GymFlipFitGymOwnerMenu {
         gymOwnerService.addGymWithSlots(gym);
     }
     void createGymOwner(){
-        gymOwnerService.createGymOwner();
+        System.out.println("Enter the following info:");
+        System.out.println("\nYour email: ");
+        String ownerEmail = obj.nextLine();
+        System.out.println("\nYour name: ");
+        String ownerName = obj.nextLine();
+        System.out.println("\nEnter a password: ");
+        String password = obj.nextLine();
+        System.out.println("\nPhone number: ");
+        String phoneNo = obj.nextLine();
+        System.out.println("\nNation ID/ Aadhaar Number: ");
+        String nationalId = obj.nextLine();
+        System.out.println("\nGST: ");
+        String GST = obj.nextLine();
+        System.out.println("\nPAN Details: ");
+        String PAN = obj.nextLine();
+
+
+        GymOwner gymOwner = new GymOwner();
+        List<Gym> emptyGymList = new ArrayList<>();
+        gymOwner.setOwnerEmail(ownerEmail);
+        gymOwner.setPAN(PAN);
+        gymOwner.setOwnerName(ownerName);
+        gymOwner.setGST(GST);
+        gymOwner.setPassword(password);
+        gymOwner.setNationalId(nationalId);
+        gymOwner.setPhoneNo(phoneNo);
+        gymOwner.setGyms(emptyGymList);
+        gymOwner.setStatus("Unverified");
+
+
+//        gymOwners.put(ownerEmail,gymOwner);
+        gymOwnerService.createGymOwner(gymOwner);
     }
 
     void displayGyms(String userId){
