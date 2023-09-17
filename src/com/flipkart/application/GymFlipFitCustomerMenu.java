@@ -28,7 +28,8 @@ public class GymFlipFitCustomerMenu {
                 int choice = Integer.parseInt(obj.nextLine());
                 switch(choice){
                     case 1:
-                        System.out.println(viewAllGymswithSlots());
+                        List<Gym> x = viewAllGymswithSlots();
+                        System.out.println(x.size());
                         break;
                     case 2:
                         System.out.println("Enter the following:");

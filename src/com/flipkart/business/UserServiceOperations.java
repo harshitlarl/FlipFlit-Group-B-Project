@@ -10,6 +10,8 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.User;
 import com.flipkart.dao.CustomerDAOImplementation;
 import com.flipkart.dao.CustomerDAOInterface;
+import com.flipkart.dao.UpdatePasswordDAOImplementation;
+import com.flipkart.dao.UpdatePasswordDAOInterface;
 
 /**
  * @author avinash.parashar
@@ -17,8 +19,13 @@ import com.flipkart.dao.CustomerDAOInterface;
 public class UserServiceOperations implements UserServices {
 
 	CustomerDAOInterface customerDAOInterface = new CustomerDAOImplementation();
+	UpdatePasswordDAOInterface updatePasswordInterface = new UpdatePasswordDAOImplementation();
 
 
+	@Override
+	public boolean verifyGymUserPassword(String email, String password, String updatedPassword) {
+		return false;
+	}
 	@Override
 	public boolean cancelSlots(int bookingId) {
 		// TODO Auto-generated method stub
@@ -36,15 +43,14 @@ public class UserServiceOperations implements UserServices {
 	@Override
 	public List<Gym> getAllGymsWithSlots() {
 		// TODO Auto-generated method stub
-		customerDAOInterface.getAllGymsByArea();
-		return null;
+		return customerDAOInterface.getAllGymsByArea();
 	}
 
 	@Override
 	public List<Gym> getAllGymsByArea(String area) {
 		// TODO Auto-generated method stub
-		customerDAOInterface.getAllGymsByArea();
-		return null;
+		return customerDAOInterface.getAllGymsByArea();
+
 	}
 
 	@Override
@@ -61,6 +67,11 @@ public class UserServiceOperations implements UserServices {
 	@Override
 	public void createUser(User user) {
 		customerDAOInterface.createUser(user);
+	}
+
+	@Override
+	public void updateGymUserPassword(String email, String password, String updatedPassword) {
+		updatePasswordInterface.updateGymUserPassword(email, password, updatedPassword);
 	}
 
 }

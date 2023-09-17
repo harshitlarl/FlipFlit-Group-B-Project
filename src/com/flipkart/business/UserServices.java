@@ -24,4 +24,7 @@ public interface UserServices {
 	boolean validateUser(String username, String pass);
 
 	void createUser(User user);
+	public boolean verifyGymUserPassword(String email, String password, String updatedPassword);
+
+	void updateGymUserPassword(String email, String password, String updatedPassword);
 }

@@ -3,6 +3,8 @@ package com.flipkart.dao;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
+import com.flipkart.constants.SQLConstants;
+import com.flipkart.utils.DatabaseConnector;
 
 //import com.flipkart.dao.GymOwnerDAOImplementation;
 //import com.flipkart.dao.DatabaseConnector;
@@ -15,31 +17,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
-    DatabaseConnector connector ;
     Connection conn;
 
-    public GymOwnerDAOImplementation() {
-        connector = new DatabaseConnector();
-        try {
-            conn = DatabaseConnector.getConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    DatabaseConnector connector;
+    @Override
     public void addGym(Gym gym){
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
-//        String insertQuery = "INSERT INTO gyms (address, location, name, status, ownerid) VALUES (?, ?, ?, ?, ?)";
-        String insertQuery = "INSERT INTO gyms (gymAddress,location,gymName,status,ownerId ) VALUES(?,?,?,?,?)";
+
         int id = 0;
         try {
             statement = conn.createStatement();
-//            resultSet = statement.executeQuery(insertQuery);
-            preparedStatement =  conn.prepareStatement(insertQuery, statement.RETURN_GENERATED_KEYS);
+            preparedStatement =  conn.prepareStatement(SQLConstants.GYM_OWNER_INSERT_GYM, statement.RETURN_GENERATED_KEYS);
 
-            // 5. Set values for the placeholders in the prepared statement
 
             preparedStatement.setString(1, gym.getGymAddress());
             preparedStatement.setString(2, gym.getLocation());
@@ -66,15 +58,6 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
             throw new RuntimeException(e);
         }
-//        finally {
-        // 7. Close the resources
-//            try {
-//                if (preparedStatement != null) preparedStatement.close();
-//                if (conn != null) conn.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
         insertSlots(gym.getSlots(),id);
 
     }
@@ -84,22 +67,24 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
-        String insertQuery = "INSERT INTO gym_owner (email,name, password, phone_number, pancard, aadhar, gst,status ) VALUES(?,?,?,?,?,?,?)";
+        conn = DatabaseConnector.getConnection();
+
 
         try {
             statement = conn.createStatement();
 //            resultSet = statement.executeQuery(insertQuery);
-            preparedStatement =  conn.prepareStatement(insertQuery);
+            preparedStatement =  conn.prepareStatement(SQLConstants.GYM_OWNER_INSERT);
 
             // 5. Set values for the placeholders in the prepared statement
 
             preparedStatement.setString(1, gymOwner.getOwnerEmail());
-            preparedStatement.setString(2, gymOwner.getPassword());
-            preparedStatement.setString(3, gymOwner.getPhoneNo());
-            preparedStatement.setString(4, gymOwner.getPAN());
-            preparedStatement.setString(5, gymOwner.getNationalId());
+            preparedStatement.setString(2, gymOwner.getOwnerName());
+            preparedStatement.setString(3, gymOwner.getPassword());
+            preparedStatement.setString(4, gymOwner.getPhoneNo());
+            preparedStatement.setString(5, gymOwner.getPAN());
             preparedStatement.setString(6, gymOwner.getGST());
-            preparedStatement.setString(7, gymOwner.getStatus());
+            preparedStatement.setString(7,gymOwner.getNationalId());
+            preparedStatement.setString(8, gymOwner.getStatus());
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -111,7 +96,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             }
 
         } catch (SQLException e) {
-
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
@@ -121,9 +106,10 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         Statement statement = null;
         ResultSet resultSet = null;
         List<Slots> slotList = new ArrayList<>();
+        conn = DatabaseConnector.getConnection();
         String password2 = "-";
         try {
-            String sqlQuery = "SELECT * FROM gym_owners WHERE email= " + email;
+            String sqlQuery = "SELECT * FROM gym_owner WHERE email= " + email;
             statement = conn.createStatement();
             resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()) {
@@ -138,9 +124,11 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
     @Override
     public void insertSlots(List<Slots> slots, int gymId){
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
+
         for( Slots slot: slots){
             String insertQuery = "INSERT INTO slots (startTime, seatCount, gymId) VALUES (?, ?, ?)";
 
@@ -168,15 +156,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
                 throw new RuntimeException(e);
             }
-//            finally {
-            // 7. Close the resources
-//                try {
-//                    if (preparedStatement != null) preparedStatement.close();
-//                    if (conn != null) conn.close();
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//            }
+//
         }
 
 
@@ -184,6 +164,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
     @Override
     public List<Gym> viewGymSlots(String gymOwnerID) {
+        conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<Gym> gyms = new ArrayList<>();
@@ -214,52 +195,12 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-//        finally {
-//            try {
-//                if (resultSet != null) resultSet.close();
-//                if (preparedStatement != null) preparedStatement.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace(); // Handle or log the exception
-//            }
-//        }
 
         return gyms;
     }
-//    public List<Gym> viewGymSlots(String gymOwnerID)  {
-//        Statement statement = null;
-//        ResultSet resultSet = null;
-//        List<Gym> gyms = null;
-//        try {
-//            String sqlQuery = "SELECT * FROM gyms WHERE email= " + gymOwnerID;
-//            statement = conn.createStatement();
-//            resultSet = statement.executeQuery(sqlQuery);
-//            while (resultSet.next()) {
-//                int id = resultSet.getInt("id");
-//                String gymAddress = resultSet.getString("gymAddress");
-//                String location = resultSet.getString("location");
-//                String gymName = resultSet.getString("gymName");
-//                String status = resultSet.getString("status");
-//                Gym gym = new Gym();
-//                gym.setGymName(gymName);
-//                gym.setGymAddress(gymAddress);
-//                gym.setOwnerId(gymOwnerID);
-//                gym.setLocation(location);
-//                gym.setStatus(status);
-//                gyms.add(gym);
-//
-////                List<Slots> slots = getGymSlotsWithGymId(id);
-////                gym.setSlots(slots);
-//
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//
-//        return gyms;
-//    }
 
     public List<Slots> getGymSlotsWithGymId(int id){
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         List<Slots> slotList = new ArrayList<>();

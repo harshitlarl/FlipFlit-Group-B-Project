@@ -4,6 +4,7 @@ import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slots;
 import com.flipkart.bean.User;
+import com.flipkart.utils.DatabaseConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,18 +14,9 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
     DatabaseConnector connector ;
     Connection conn;
-
-    public CustomerDAOImplementation() {
-        connector = new DatabaseConnector();
-        try {
-            conn = DatabaseConnector.getConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public List<Gym> getAllGymsByArea() {
+        conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<Gym> gyms = new ArrayList<>();
@@ -55,16 +47,18 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-//
+
         return gyms;
     }
 
     @Override
     public boolean bookSlot(int gymId, int time,String email) {
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
-        String insertQuery = "INSERT INTO gym_owner (userId,status,date,time,slotId,GymId ) VALUES(?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO Booking (userId,status,date,time,slotId,GymId ) VALUES(?,?,?,?,?,?)";
+
 
         try {
             statement = conn.createStatement();
@@ -98,12 +92,13 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
     @Override
     public List<Bookings> getAllBookingByUserID(String userId) {
+        conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<Bookings> bookings = new ArrayList<>();
 
         try {
-            String sqlQuery = "SELECT * FROM bookings where userId=" + userId;
+            String sqlQuery = "SELECT * FROM Booking where userId=" + userId;
             preparedStatement = conn.prepareStatement(sqlQuery);
             resultSet = preparedStatement.executeQuery();
 
@@ -132,12 +127,13 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
     @Override
     public boolean cancelBooking(int bookingId) {
+        conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<Bookings> bookings = new ArrayList<>();
 
         try {
-            String sqlQuery = "DELETE * FROM bookings where bookingId=" + bookingId;
+            String sqlQuery = "DELETE * FROM Booking where bookingId=" + bookingId;
             preparedStatement = conn.prepareStatement(sqlQuery);
             preparedStatement.executeQuery();
 
@@ -149,11 +145,12 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
     @Override
     public boolean validateUser(String username, String pass) {
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         String password2 = "-";
         try {
-            String sqlQuery = "SELECT * FROM customers WHERE email= " + username;
+            String sqlQuery = "SELECT * FROM User WHERE email= \""  + username + "\"";
             statement = conn.createStatement();
             resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()) {
@@ -167,10 +164,11 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
     @Override
     public void createUser(User user) {
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         PreparedStatement preparedStatement = null;
-        String insertQuery = "INSERT INTO customers (username,email, password, phoneNumber, address, location) VALUES(?,?,?,?,?,?)";
+        String insertQuery = "INSERT INTO User (userName,email, password, phoneNumber, Address, location) VALUES(?,?,?,?,?,?)";
 
         try {
             statement = conn.createStatement();
@@ -201,6 +199,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
     }
 
     public List<Slots> getGymSlotsWithGymId(int id){
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         List<Slots> slotList = new ArrayList<>();

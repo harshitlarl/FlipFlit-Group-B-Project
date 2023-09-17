@@ -4,9 +4,10 @@ import java.util.*;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.Slots;
 import com.flipkart.dao.GymOwnerDAOImplementation;
 import com.flipkart.dao.GymOwnerDaoInterface;
+import com.flipkart.dao.UpdatePasswordDAOImplementation;
+import com.flipkart.dao.UpdatePasswordDAOInterface;
 
 
 public class GymOwnerServiceOperation implements GymOwnerService{
@@ -14,6 +15,7 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 	HashMap<String,GymOwner> gymOwners = new HashMap();
 	GymOwnerDaoInterface gymOwnerDaoInterface = new GymOwnerDAOImplementation();
 	Scanner obj = new Scanner(System.in);
+	UpdatePasswordDAOInterface updatePasswordInterface = new UpdatePasswordDAOImplementation();
 	int id = 0;
 	@Override
 	public void addGymWithSlots(Gym gym) {
@@ -34,6 +36,15 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 	public void createGymOwner(GymOwner gymOwner){
 		gymOwnerDaoInterface.newGymOwner(gymOwner);
 
+	}
+	@Override
+	public boolean verifyGymOwnerPassword(String email, String password, String updatedPassword) {
+		return updatePasswordInterface.verifyGymUserPassword(email, password, updatedPassword);
+    }
+
+	@Override
+	public void updateGymOwnerPassword(String email, String password, String updatedPassword) {
+		updatePasswordInterface.updateGymOwnerPassword(email, password, updatedPassword);
 	}
 
 }
