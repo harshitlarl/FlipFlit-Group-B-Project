@@ -1,6 +1,7 @@
 package com.flipkart.dao;
 
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
 
 import java.sql.SQLException;
@@ -12,4 +13,8 @@ public interface GymOwnerDaoInterface {
     public List<Gym> viewGymSlots(String gymOwnerID);
 
     void addGym(Gym gym);
+
+    void newGymOwner(GymOwner gymOwner);
+
+    boolean validateLogin(String email, String password);
 }
