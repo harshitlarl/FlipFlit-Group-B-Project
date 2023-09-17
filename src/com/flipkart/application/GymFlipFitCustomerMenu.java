@@ -14,9 +14,7 @@ public class GymFlipFitCustomerMenu {
     UserServiceOperations userServiceOperation = new UserServiceOperations();
     User user = new User();
     public boolean userLogin(String username, String pass){
-        String dummyUsername="abc";
-        String dummyPass="abc";
-        if(username.equals(dummyUsername) && pass.equals(dummyPass)){
+        if(validateUser(username,pass)){
             boolean flag = true;
             System.out.println("Login Successful");
             while(flag){
@@ -76,6 +74,11 @@ public class GymFlipFitCustomerMenu {
         else return false;
         return true;
     }
+
+    private boolean validateUser(String username, String pass) {
+        return userServiceOperation.validateUser(username,pass);
+    }
+
     List<Gym> viewAllGymswithSlots(){
         System.out.println("List of Gyms");
         List<Gym> gymList=userServiceOperation.getAllGymsWithSlots();
@@ -97,5 +100,32 @@ public class GymFlipFitCustomerMenu {
         System.out.println("List of Gyms");
         List<Gym> gymList=userServiceOperation.getAllGymsByArea(location);
         return gymList;
+    }
+
+    public void createCustomer() {
+        System.out.println("Enter the following info:");
+        System.out.println("\nYour email: ");
+        String ownerEmail = obj.nextLine();
+        System.out.println("\nYour name: ");
+        String ownerName = obj.nextLine();
+        System.out.println("\nEnter a password: ");
+        String password = obj.nextLine();
+        System.out.println("\nPhone number: ");
+        String phoneNo = obj.nextLine();
+        System.out.println("\nEnter Address ");
+        String nationalId = obj.nextLine();
+        System.out.println("\nLocation: ");
+        String GST = obj.nextLine();
+
+        User user = new User();
+        user.setEmail(ownerEmail);
+        user.setAddress(nationalId);
+        user.setLocation(GST);
+        user.setPassword(password);
+        user.setUserName(ownerName);
+        user.setPhoneNumber(phoneNo);
+
+
+        userServiceOperation.createUser(user);
     }
 }

@@ -123,7 +123,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
         List<Slots> slotList = new ArrayList<>();
         String password2 = "-";
         try {
-            String sqlQuery = "SELECT * FROM slots WHERE email= " + email;
+            String sqlQuery = "SELECT * FROM gym_owners WHERE email= " + email;
             statement = conn.createStatement();
             resultSet = statement.executeQuery(sqlQuery);
             while (resultSet.next()) {

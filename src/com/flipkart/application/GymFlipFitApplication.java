@@ -59,6 +59,7 @@ public class GymFlipFitApplication {
                     int k = Integer.parseInt(obj.nextLine());
                     switch(k){
                         case 1:
+                            customer.createCustomer();
                             break;
                         case 2:
                             owner.createGymOwner();

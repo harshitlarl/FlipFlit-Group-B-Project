@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.User;
 import com.flipkart.dao.CustomerDAOImplementation;
 import com.flipkart.dao.CustomerDAOInterface;
 
@@ -50,6 +51,16 @@ public class UserServiceOperations implements UserServices {
 	public boolean bookSlots(int gymId, int time, String email) {
 		boolean x = customerDAOInterface.bookSlot(gymId,time,email);
 		return false;
+	}
+
+	@Override
+	public boolean validateUser(String username, String pass) {
+		return customerDAOInterface.validateUser(username,pass);
+	}
+
+	@Override
+	public void createUser(User user) {
+		customerDAOInterface.createUser(user);
 	}
 
 }

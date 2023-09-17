@@ -3,6 +3,7 @@ package com.flipkart.dao;
 import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slots;
+import com.flipkart.bean.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -144,6 +145,59 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
             throw new RuntimeException(e);
         }
         return true;
+    }
+
+    @Override
+    public boolean validateUser(String username, String pass) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String password2 = "-";
+        try {
+            String sqlQuery = "SELECT * FROM customers WHERE email= " + username;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                password2 = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return password2.equals(pass);
+    }
+
+    @Override
+    public void createUser(User user) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        String insertQuery = "INSERT INTO customers (username,email, password, phoneNumber, address, location) VALUES(?,?,?,?,?,?)";
+
+        try {
+            statement = conn.createStatement();
+//            resultSet = statement.executeQuery(insertQuery);
+            preparedStatement =  conn.prepareStatement(insertQuery);
+
+            // 5. Set values for the placeholders in the prepared statement
+
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getPhoneNumber());
+            preparedStatement.setString(5, user.getAddress());
+            preparedStatement.setString(6, user.getLocation());
+
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                System.out.println("Record inserted successfully!");
+            } else {
+                System.out.println("Failed to insert the record.");
+            }
+
+        } catch (SQLException e) {
+
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Slots> getGymSlotsWithGymId(int id){

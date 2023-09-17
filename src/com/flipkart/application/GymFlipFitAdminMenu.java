@@ -18,7 +18,7 @@ public class GymFlipFitAdminMenu {
     public ArrayList<GymOwner> verifiedGymOwner(){
         // will return verified GymOwner
         System.out.println("Returning list of verified gym owners");
-        ArrayList<GymOwner> gymOwnersList = new ArrayList<GymOwner>();
+        ArrayList<GymOwner> gymOwnersList = new ArrayList<>();
         return gymOwnersList;
     }
     public ArrayList<Gym> verificationPendingGym(){
