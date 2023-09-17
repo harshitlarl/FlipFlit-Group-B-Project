@@ -11,6 +11,36 @@ public class GymOwner {
 	private String GST;
 	private List<Gym> gyms;
 
+	public String getPAN() {
+		return PAN;
+	}
+
+	public void setPAN(String PAN) {
+		this.PAN = PAN;
+	}
+
+	private String PAN;
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	private String ownerName;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	private String status;
+
 	public List<Gym> getGyms() {
 		return gyms;
 	}
