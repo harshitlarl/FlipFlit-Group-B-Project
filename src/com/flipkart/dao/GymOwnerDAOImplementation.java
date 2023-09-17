@@ -103,22 +103,28 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
     @Override
     public boolean validateLogin(String email, String password) {
+        conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
-        List<Slots> slotList = new ArrayList<>();
-        conn = DatabaseConnector.getConnection();
-        String password2 = "-";
+        PreparedStatement preparedStatement = null;
         try {
-            String sqlQuery = "SELECT * FROM gym_owner WHERE email= " + email;
             statement = conn.createStatement();
-            resultSet = statement.executeQuery(sqlQuery);
-            while (resultSet.next()) {
-                password2 = resultSet.getString("password");
+            preparedStatement = conn.prepareStatement(SQLConstants.GYM_USER_VERIFY_PASSWORD, statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            if (result.next()) {
+                return true;
+            } else {
+                return false;
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return password2.equals(password);
 
     }
 

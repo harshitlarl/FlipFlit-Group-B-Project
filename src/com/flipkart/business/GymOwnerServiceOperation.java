@@ -38,8 +38,8 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 
 	}
 	@Override
-	public boolean verifyGymOwnerPassword(String email, String password, String updatedPassword) {
-		return updatePasswordInterface.verifyGymUserPassword(email, password, updatedPassword);
+	public boolean verifyGymOwnerPassword(String email, String password) {
+		return updatePasswordInterface.verifyGymUserPassword(email, password);
     }
 
 	@Override
