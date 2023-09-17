@@ -3,6 +3,7 @@ package com.flipkart.dao;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
+import com.flipkart.exception.VerificationFailedException;
 import com.flipkart.utils.DatabaseConnector;
 
 import java.sql.*;
@@ -40,7 +41,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("---------------------------------");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -73,7 +74,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("---------------------------------");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -108,7 +109,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("---------------------------------");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -129,13 +130,17 @@ public class AdminDAOImplementation implements AdminDAOInterface {
             if(stats > 0 ) {
                 System.out.println("Verified GymOwner successfully");
             } else {
-                System.out.println("Gym Owner verification failed");
+                throw new VerificationFailedException();
+//                System.out.println("Gym Owner verification failed");
             }
 
             System.out.println("---------------------------------");
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }catch(VerificationFailedException ex){
+            System.out.println("Gym Owner "+ex.getMessage());
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -155,13 +160,17 @@ public class AdminDAOImplementation implements AdminDAOInterface {
             if(stats > 0 ) {
                 System.out.println("Verified Gym successfully");
             } else {
-                System.out.println("Gym Owner verification failed");
+                throw new VerificationFailedException();
+//                System.out.println("Gym Owner verification failed");
             }
 
             System.out.println("---------------------------------");
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }catch(VerificationFailedException ex){
+            System.out.println("Gym "+ex.getMessage());
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());;
         }
     }
 
@@ -194,7 +203,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 gyms.add(gym);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return gyms;
     }
@@ -230,7 +239,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 gymOwners.add(x);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return gymOwners;
     }

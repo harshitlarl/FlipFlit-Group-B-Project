@@ -4,6 +4,8 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
 import com.flipkart.constants.SQLConstants;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.SlotInsertionFailedException;
 import com.flipkart.utils.DatabaseConnector;
 
 //import com.flipkart.dao.GymOwnerDAOImplementation;
@@ -44,8 +46,9 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             if (rowsInserted > 0) {
                 System.out.println("Record inserted successfully!");
             } else {
-                System.out.println("Failed to insert the record.");
-                return ;
+                throw new RegistrationFailedException();
+////                System.out.println("Failed to insert the record.");
+//                return ;
             }
             ResultSet rs = preparedStatement.getGeneratedKeys();
 
@@ -54,9 +57,13 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             }
 
 
-        } catch (SQLException e) {
+        } catch (RegistrationFailedException ex){
+            System.out.println("Gym "+ex.getMessage());
 
-            throw new RuntimeException(e);
+        }
+        catch (SQLException e) {
+
+            System.out.println(e.getMessage());
         }
         insertSlots(gym.getSlots(),id);
 
@@ -91,13 +98,17 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
             if (rowsInserted > 0) {
                 System.out.println("Record inserted successfully!");
             } else {
-                System.out.println("Failed to insert the record.");
-                return ;
+                throw new RegistrationFailedException();
+//                System.out.println("Failed to insert the record.");
+//                return ;
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        }catch(RegistrationFailedException ex){
+            System.out.println("Gym Owner" + ex.getMessage());
+        }catch (SQLException e) {
+            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//            throw new RuntimeException(e);
         }
     }
 
@@ -116,7 +127,8 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
                 password2 = resultSet.getString("password");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
+//            throw new RuntimeException(e);
         }
         return password2.equals(password);
 
@@ -148,13 +160,14 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
                 if (rowsInserted > 0) {
                     System.out.println("Record inserted successfully!");
                 } else {
-                    System.out.println("Failed to insert the record.");
-                    return ;
+                    throw new SlotInsertionFailedException();
+
+//                    System.out.println("Failed to insert the record.");
+//                    return ;
                 }
 
-            } catch (SQLException e) {
-
-                throw new RuntimeException(e);
+            }catch(SlotInsertionFailedException | SQLException ex){
+                System.out.println(ex.getMessage());
             }
 //
         }
@@ -193,7 +206,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
                 gym.setSlots(slots);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
 
         return gyms;
@@ -217,7 +230,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
                 slotList.add(slots);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return slotList;
     }

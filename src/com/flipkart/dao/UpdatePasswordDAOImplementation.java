@@ -4,6 +4,7 @@ import com.flipkart.bean.Gym;
 import com.flipkart.bean.User;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.constants.SQLConstants;
+import com.flipkart.exception.WrongCredentialsException;
 import com.flipkart.utils.DatabaseConnector;
 
 
@@ -38,12 +39,15 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             if (rowsInserted > 0) {
                 System.out.println("Updated Password successfully!");
             } else {
-                System.out.println("Failed to Update  the record.");
-                return;
+                throw new WrongCredentialsException();
+//                System.out.println("Failed to Update  the record.");
+//                return;
             }
 
+        }catch(WrongCredentialsException ex){
+            System.out.println("Gym Owner" + ex.getMessage());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());;
         }
 
     }
@@ -70,12 +74,15 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             if (rowsInserted > 0) {
                 System.out.println("Updated Password successfully!");
             } else {
-                System.out.println("Failed to Update  the record.");
-                return;
+                throw new WrongCredentialsException();
+//                System.out.println("Failed to Update  the record.");
+//                return;
             }
 
+        }catch(WrongCredentialsException ex){
+            System.out.println("Gym user " + ex.getMessage());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -105,8 +112,9 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
+        return false;
     }
 
     @Override
@@ -135,7 +143,8 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
+        return false;
     }
 }

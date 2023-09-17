@@ -4,6 +4,8 @@ import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slots;
 import com.flipkart.bean.User;
+import com.flipkart.exception.RegistrationFailedException;
+import com.flipkart.exception.SlotsUnavailableException;
 import com.flipkart.utils.DatabaseConnector;
 
 import java.sql.*;
@@ -45,7 +47,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
                 gym.setSlots(slots);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());;
         }
 
         return gyms;
@@ -79,13 +81,15 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
             if (rowsInserted > 0) {
                 System.out.println("Record inserted successfully!");
             } else {
-                System.out.println("Failed to insert the record.");
-                return false;
+                throw new SlotsUnavailableException();
+
+//                System.out.println("Failed to insert the record.");
+//                return false;
             }
 
-        } catch (SQLException e) {
+        }catch(SlotsUnavailableException | SQLException ex){
+            System.out.println(ex.getMessage());
 
-            throw new RuntimeException(e);
         }
         return true;
     }
@@ -120,7 +124,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return bookings;
     }
@@ -138,7 +142,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
             preparedStatement.executeQuery();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return true;
     }
@@ -157,7 +161,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
                 password2 = resultSet.getString("password");
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return password2.equals(pass);
     }
@@ -189,12 +193,15 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
             if (rowsInserted > 0) {
                 System.out.println("Record inserted successfully!");
             } else {
-                System.out.println("Failed to insert the record.");
+                throw new RegistrationFailedException();
+
+//                System.out.println("Failed to insert the record.");
             }
 
+        }catch(RegistrationFailedException ex){
+            System.out.println("User "+ ex.getMessage());
         } catch (SQLException e) {
-
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -216,7 +223,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
                 slotList.add(slots);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return slotList;
     }
