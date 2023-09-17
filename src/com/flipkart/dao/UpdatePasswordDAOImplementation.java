@@ -80,7 +80,7 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
     }
 
     @Override
-    public boolean verifyGymOwnerPassword(String email, String password, String updatedPassword) {
+    public boolean verifyGymOwnerPassword(String email, String password) {
         conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
@@ -89,11 +89,8 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             statement = conn.createStatement();
             preparedStatement = conn.prepareStatement(SQLConstants.GYM_OWNER_VERIFY_PASSWORD, statement.RETURN_GENERATED_KEYS);
 
-            // 5. Set values for the placeholders in the prepared statement
-
-            preparedStatement.setString(1, updatedPassword);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
 
 
             int result = preparedStatement.executeUpdate();
@@ -110,7 +107,7 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
     }
 
     @Override
-    public boolean verifyGymUserPassword(String email, String password, String updatedPassword) {
+    public boolean verifyGymUserPassword(String email, String password) {
         conn = DatabaseConnector.getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
@@ -118,17 +115,13 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
         try {
             statement = conn.createStatement();
             preparedStatement = conn.prepareStatement(SQLConstants.GYM_USER_VERIFY_PASSWORD, statement.RETURN_GENERATED_KEYS);
-
-            // 5. Set values for the placeholders in the prepared statement
-
-            preparedStatement.setString(1, updatedPassword);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
 
 
-            int result = preparedStatement.executeUpdate();
+            ResultSet result = preparedStatement.executeQuery();
 
-            if (result > 0) {
+            if (result.next()) {
                 return true;
             } else {
                 return false;

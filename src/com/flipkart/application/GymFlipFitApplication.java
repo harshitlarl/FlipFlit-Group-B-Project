@@ -125,14 +125,14 @@ public class GymFlipFitApplication {
 
                     switch (respectiveRole) {
                         case "Customer" :
-                            if(!customer.userLogin(user,userPassword))
+                            if(!customer.validateUser(user,userPassword))
                                 System.out.println("Invalid credentials");
                             else{
                                 userService.updateGymUserPassword(user,userPassword, updatedPassword);
                             }
                             break;
                         case "GymOwner" :
-                            if(!owner.gymOwnerLogin(user,userPassword)){
+                            if(!owner.verifyGymOwner(user,userPassword)){
                                 System.out.println("Invalid credentials");
                             }
                             else{

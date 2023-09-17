@@ -76,7 +76,7 @@ public class GymFlipFitCustomerMenu {
         return true;
     }
 
-    private boolean validateUser(String username, String pass) {
+    public boolean validateUser(String username, String pass) {
         return userServiceOperation.validateUser(username,pass);
     }
 

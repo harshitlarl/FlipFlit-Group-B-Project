@@ -28,8 +28,9 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 
 	@Override
 	public boolean validateLogin(String email, String password) {
-		if(gymOwnerDaoInterface.validateLogin(email,password)) return true;
-        return false;
+		return updatePasswordInterface.verifyGymUserPassword(email, password);
+//		if(gymOwnerDaoInterface.validateLogin(email,password)) return true;
+//        return false;
     }
 
 	@Override
@@ -38,8 +39,8 @@ public class GymOwnerServiceOperation implements GymOwnerService{
 
 	}
 	@Override
-	public boolean verifyGymOwnerPassword(String email, String password, String updatedPassword) {
-		return updatePasswordInterface.verifyGymUserPassword(email, password, updatedPassword);
+	public boolean verifyGymOwnerPassword(String email, String password) {
+		return updatePasswordInterface.verifyGymUserPassword(email, password);
     }
 
 	@Override

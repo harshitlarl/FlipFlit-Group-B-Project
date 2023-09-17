@@ -6,6 +6,7 @@ import com.flipkart.bean.Slots;
 import com.flipkart.business.GymOwnerService;
 import com.flipkart.business.GymOwnerServiceOperation;
 
+import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,10 @@ public class GymFlipFitGymOwnerMenu {
 
     GymOwnerService gymOwnerService = new GymOwnerServiceOperation();
     static Scanner obj = new Scanner(System.in);
+
+    boolean verifyGymOwner(String email, String password){
+        return gymOwnerService.validateLogin(email, password);
+    }
     boolean gymOwnerLogin(String email, String password){
         if(gymOwnerService.validateLogin(email, password)){
             System.out.println("Login Successful");
