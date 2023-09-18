@@ -1,5 +1,4 @@
 package com.flipkart.bean;
-
 /**
  * This class represents a User in the GymFlipFit application.
  * It stores user information such as user ID, name, contact details, address, location, email, and password.
