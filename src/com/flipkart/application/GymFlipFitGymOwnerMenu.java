@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.flipkart.constants.ColorConstants.ANSI_RESET;
-import static com.flipkart.constants.ColorConstants.ANSI_YELLOW;
+import static com.flipkart.constants.ColorConstants.*;
 
 /**
  * This class represents the Gym Owner menu for the GymFlipFit application.
@@ -44,7 +43,7 @@ public class GymFlipFitGymOwnerMenu {
      */
     boolean gymOwnerLogin(String email, String password) {
         if (gymOwnerService.validateLogin(email, password)) {
-            System.out.println("Login Successful");
+            System.out.println(ANSI_BLUE+ "Login Successful"+ANSI_RESET);
             while (true) {
                 System.out.println("Gym Owner menu--------------------");
                 System.out.println("1. Add a gym");
