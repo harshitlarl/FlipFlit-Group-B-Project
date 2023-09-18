@@ -118,7 +118,7 @@ public class GymFlipFitGymOwnerMenu {
         List<Gym> gymsList= gymOwnerService.viewMyGyms(userId);
         int x = 1;
         for(Gym gym:gymsList){
-            System.out.println("Gym " + x + ": Name " + gym.getGymName() + " Address: " + gym.getGymAddress() + " Location: " + gym.getLocation() );
+            System.out.println("Gym " + x + ": Name " + gym.getGymName() + "     Address: " + gym.getGymAddress() + "       Location: " + gym.getLocation() );
             System.out.println("Slots: ");
             for(Slots slot:gym.getSlots()){
                 System.out.println("Slot: " + slot.getSlotsId() + " Slot Time: " + slot.getStartTime() + " - " + (slot.getStartTime() + 1) + " Seats: " + slot.getSeatCount() );

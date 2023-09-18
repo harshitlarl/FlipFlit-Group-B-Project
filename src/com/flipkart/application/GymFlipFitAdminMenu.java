@@ -42,17 +42,20 @@ public class GymFlipFitAdminMenu {
         List<Gym>gyms = adminService.getUnverifiedGyms();
         int x = 1;
         for(Gym g : gyms) {
-            System.out.println("Gym " + x + ": Name " + g.getGymName() + " Address: " + g.getGymAddress() + " Location: " + g.getLocation() );
+            System.out.println("Gym " + x + ": Name " + g.getGymName()+ "   Gym Id:  "+ g.getGymId() + "     Address: " + g.getGymAddress() + "     Location: " + g.getLocation()  + "     Status:   "+ g.getStatus() );
             x++;
+            System.out.println("\n-------------------------------------------------------------");
         }
+
     }
 
     public void viewUnverifiedGymOwners() {
         List<GymOwner>g = adminService.getUnverifiedGymOwners();
         int x = 1;
         for(GymOwner gymOwner : g) {
-            System.out.println("GymOwner " + x + ": Id " + gymOwner.getOwnerId() + " Email: " + gymOwner.getOwnerEmail() + " Phone No: " + gymOwner.getPhoneNo());
+            System.out.println("GymOwner " + x + "-->   Gym Owner Id " + gymOwner.getOwnerId() + "    Email: " + gymOwner.getOwnerEmail() + "    Phone No: " + gymOwner.getPhoneNo() + "   Status:"+ gymOwner.getStatus());
             x++;
+            System.out.println("\n-------------------------------------------------------------");
         }
     }
 

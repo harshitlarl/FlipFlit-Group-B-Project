@@ -73,7 +73,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String email = resultSet.getString("email");
 
                 // Print the data or perform any other operations you need
-                System.out.println("Gym ID: " + id);
+                System.out.println("User ID: " + id);
                 System.out.println("Name: " + name);
                 System.out.println("Phone No : " + phoneNo);
                 System.out.println("Address : " + address);
@@ -106,15 +106,17 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String email = resultSet.getString("email");
                 String adhaar = resultSet.getString("aadhar");
                 String pan = resultSet.getString("pancard");
+                String statusGymOwner = resultSet.getString("status");
 
                 // Print the data or perform any other operations you need
-                System.out.println("Gym ID: " + id);
+                System.out.println("Gym Owner ID: " + id);
                 System.out.println("Name: " + name);
                 System.out.println("Phone No : " + phoneNo);
 
                 System.out.println("Email Id : " + email);
                 System.out.println("Adhaar no : " + adhaar);
                 System.out.println("PAN Card Number : " + pan);
+                System.out.println("Status  of The Gym Owner : " + statusGymOwner);
 
                 System.out.println("---------------------------------");
             }
