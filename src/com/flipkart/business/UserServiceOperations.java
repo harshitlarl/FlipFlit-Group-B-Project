@@ -55,8 +55,7 @@ public class UserServiceOperations implements UserServices {
 
 	@Override
 	public boolean bookSlots(int gymId, int time, String email) {
-		boolean x = customerDAOInterface.bookSlot(gymId,time,email);
-		return false;
+		return customerDAOInterface.bookSlot(gymId,time,email);
 	}
 
 	@Override

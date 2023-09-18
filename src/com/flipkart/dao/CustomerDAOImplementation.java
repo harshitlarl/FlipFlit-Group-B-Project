@@ -4,13 +4,16 @@ import com.flipkart.bean.Bookings;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.Slots;
 import com.flipkart.bean.User;
+import com.flipkart.exception.BookingCancellationFailedException;
 import com.flipkart.exception.RegistrationFailedException;
 import com.flipkart.exception.SlotsUnavailableException;
 import com.flipkart.utils.DatabaseConnector;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CustomerDAOImplementation implements CustomerDAOInterface {
 
@@ -35,12 +38,14 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
                 String gymName = resultSet.getString("gymName");
                 String status = resultSet.getString("status");
                 String gymOwnerID = resultSet.getString("ownerid");
+                if(Objects.equals(status, "unverified")) continue;
                 Gym gym = new Gym();
                 gym.setGymName(gymName);
                 gym.setGymAddress(gymAddress);
                 gym.setOwnerId(gymOwnerID);
                 gym.setLocation(location);
                 gym.setStatus(status);
+                gym.setGymId(id);
                 gyms.add(gym);
 
                 List<Slots> slots = getGymSlotsWithGymId(id);
@@ -61,8 +66,13 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
         PreparedStatement preparedStatement = null;
         String insertQuery = "INSERT INTO Booking (userId,status,date,time,slotId,GymId ) VALUES(?,?,?,?,?,?)";
 
-
+        int alreadyBooked = getSeatNumberWithGymIDandSlotId(gymId, time);
+        int remaining = getSeatNumberWithGymIDandSlotIdFromSlots(gymId, time);
         try {
+            if(remaining <= 0){
+                System.out.println("No slots available");
+                throw new SlotsUnavailableException();
+            }
             statement = conn.createStatement();
 //            resultSet = statement.executeQuery(insertQuery);
             preparedStatement =  conn.prepareStatement(insertQuery);
@@ -86,12 +96,74 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 //                System.out.println("Failed to insert the record.");
 //                return false;
             }
+            alterSeatsWithGymIDSlotID(gymId,time,remaining-1);
 
         }catch(SlotsUnavailableException | SQLException ex){
             System.out.println(ex.getMessage());
 
         }
         return true;
+    }
+
+    private int getSeatNumberWithGymIDandSlotIdFromSlots(int gymId, int time) {
+        conn = DatabaseConnector.getConnection();
+        Statement statement = null;
+        ResultSet resultSet = null;
+        int x = 0;
+        try {
+            String sqlQuery = "SELECT seatCount FROM slots WHERE gymId= "  + gymId + " AND startTime = " + time;
+            statement = conn.createStatement();
+            resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next()) {
+                x = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return x;
+    }
+
+    private void alterSeatsWithGymIDSlotID(int gymId, int time,int x) {
+        conn = DatabaseConnector.getConnection();
+        Statement statement = null;
+        int resultSet = 0;
+        List<Slots> slotList = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        try {
+            String sqlQuery = "UPDATE slots SET seatCount= " + x + "   WHERE gymId= " + gymId + " AND startTime= " + time;
+            preparedStatement = conn.prepareStatement(sqlQuery);
+
+            resultSet = preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    private int getSeatNumberWithGymIDandSlotId(int gymId, int time) {
+        conn = DatabaseConnector.getConnection();
+        Statement statement=null;
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        int number=0;
+        try {
+            String sqlQuery= "SELECT COUNT(*) from Booking where gymId=? AND time=?";
+            preparedStatement = conn.prepareStatement(sqlQuery);
+            preparedStatement.setInt(1, gymId);
+            preparedStatement.setInt(2, time);
+
+            resultSet = preparedStatement.executeQuery();
+
+
+            while (resultSet.next()) {
+                number = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return number;
     }
 
     @Override
@@ -102,7 +174,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
         List<Bookings> bookings = new ArrayList<>();
 
         try {
-            String sqlQuery = "SELECT * FROM Booking where userId=" + userId;
+            String sqlQuery = "SELECT * FROM Booking where userId=\"" + userId + "\"";
             preparedStatement = conn.prepareStatement(sqlQuery);
             resultSet = preparedStatement.executeQuery();
 
