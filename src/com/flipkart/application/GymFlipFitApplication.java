@@ -19,6 +19,12 @@ public class GymFlipFitApplication {
     static Scanner obj = new Scanner(System.in);
 
     static Properties prop = new Properties();
+
+    /**
+     * @ Main application
+     * @author bhavya.khandelwal
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("------------------------------------------------------------------");
         System.out.println("        Welcome to FlipFit application for slot booking!");
