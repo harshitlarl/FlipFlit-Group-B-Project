@@ -11,14 +11,19 @@ import java.util.Properties;
 public class DatabaseConnector {
     private static Connection connection = null;
 
+    /**
+     * Get a database connection.
+     *
+     * @author: Bhavya, Harshit
+     * @return A database connection instance.
+     */
     public static Connection getConnection() {
         try {
-            if(isValid()) {
+            if (isValid()) {
                 return connection;
-            }
-            else {
+            } else {
                 try {
-                    Properties prop = new Properties(); //Properties is used to read files
+                    Properties prop = new Properties(); // Properties is used to read files
                     InputStream inputStream = DatabaseConnector.class.getClassLoader().getResourceAsStream("./config.properties");
                     prop.load(inputStream);
                     String driver = prop.getProperty("driver");
@@ -38,12 +43,16 @@ public class DatabaseConnector {
                 }
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return connection;
-
     }
+
+    /**
+     * Check if the current database connection is valid and not closed.
+     *
+     * @return true if the connection is valid and not closed, otherwise false.
+     */
     public static boolean isValid() throws SQLException {
         return connection != null && !connection.isClosed();
     }
