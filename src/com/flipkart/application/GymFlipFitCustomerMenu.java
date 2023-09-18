@@ -45,8 +45,8 @@ public class GymFlipFitCustomerMenu {
                         printGyms(gyms);
                         break;
                     case 2:
-                        List<Gym> gyms = viewAllGymswithSlots();
-                        printGyms(gyms);
+                        List<Gym> gyms1 = viewAllGymswithSlots();
+                        printGyms(gyms1);
                         System.out.println("Enter the following:");
                         System.out.println("Gym ID");
                         int gymId = Integer.parseInt(obj.nextLine());
