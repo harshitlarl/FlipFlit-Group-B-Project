@@ -4,15 +4,225 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e127498-d81b-411a-b5ba-7f416f9deb5c" name="Changes" comment="Added GymOwner Login and Registration">
-      <change afterPath="$PROJECT_DIR$/src/com/flipkart/dao/CustomerDAOImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0e127498-d81b-411a-b5ba-7f416f9deb5c" name="Changes" comment="Fixed bug">
+      <change afterPath="$PROJECT_DIR$/JEDI-2.0-Group-B-FlipFit-POS/Flipfit.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEDI-2.0-Group-B-FlipFit-POS/JEDI-2.0-Group-B-FlipFit-POS.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JEDI-2.0-Group-B-FlipFit-POS/untitled/untitled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitCustomerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitCustomerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/UserServiceOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/flipkart/business/UserServiceOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/CutomerDAOImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Flipfit.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/allclasses.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/GymFlipFitAdminMenu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/GymFlipFitApplication.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/GymFlipFitCustomerMenu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/GymFlipFitGymOwnerMenu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/application/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/Admin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/Bookings.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/Gym.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/GymOwner.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/Notifications.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/Slots.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/User.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/bean/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/AdminService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/AdminServiceOperation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/GymOwnerService.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/GymOwnerServiceOperation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/GymServiceOperations.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/GymServices.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/UserServiceOperations.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/UserServices.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/business/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/constants/ColorConstants.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/constants/SQLConstants.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/constants/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/constants/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/AdminDAOImplementation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/AdminDAOInterface.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/CustomerDAOImplementation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/CustomerDAOInterface.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/GymOwnerDAOImplementation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/GymOwnerDaoInterface.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/UpdatePasswordDAOImplementation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/UpdatePasswordDAOInterface.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/dao/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/BookingCancellationFailedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/InvalidAadharCardException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/InvalidGstException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/InvalidPanCardException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/InvalidPhoneNumberException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/ListNotFoundException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/RegistrationFailedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/SlotInsertionFailedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/SlotsUnavailableException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/UserNotFoundException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/VerificationFailedException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/WrongCredentialsException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/exception/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/utils/DatabaseConnector.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/utils/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/com/flipkart/utils/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/external/jquery/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jquery-3.6.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip-utils/dist/jszip-utils-ie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip-utils/dist/jszip-utils-ie.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip/dist/jszip.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/jquery/jszip/dist/jszip.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/jszip.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/legal/pako.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/member-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/package-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-Docs/type-search-index.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-POS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-POS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-UML/Functional Requirements.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-UML/flipFitClassDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-UML/flipFitUseCaseDiagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-UML/gymOwnerActivityDiagram.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JEDI-2.0-Group-B-Java-Project-UML/userActivityDiagram.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Bookings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Gym.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/GymOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Notifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/Slots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/bean/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/AdminServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/BookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/BookingServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/GymOwnerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/GymOwnerServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/GymServiceOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/GymServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/UserServiceOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/flipkart/business/UserServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/application/GymFlipFitAdminMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/application/GymFlipFitApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/application/GymFlipFitCustomerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/application/GymFlipFitGymOwnerMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/Admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/Bookings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/Gym.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/GymOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/Notifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/Slots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/bean/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/AdminService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/AdminServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/BookingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/BookingServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/GymOwnerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/GymOwnerServiceOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/GymServiceOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/GymServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/UserServiceOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/business/UserServices.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/AdminDAOImplementation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/CutomerDAOImplementation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/DatabaseConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/GymOwnerDAOImplementation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/GymOwnerDaoInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/production/Flipfit/com/flipkart/dao/InsertanyData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitAdminMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitCustomerMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/application/GymFlipFitGymOwnerMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/Bookings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/Gym.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/GymOwner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/Notifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/Slots.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/bean/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/AdminServiceOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/GymOwnerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/GymOwnerServiceOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/GymServiceOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/GymServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/UserServiceOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/business/UserServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constants/ColorConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/constants/SQLConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/AdminDAOImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/AdminDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/CustomerDAOImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/CustomerDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDAOImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/GymOwnerDaoInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/UpdatePasswordDAOImplementation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/dao/UpdatePasswordDAOInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/BookingCancellationFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/InvalidAadharCardException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/InvalidGstException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/InvalidPanCardException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/InvalidPhoneNumberException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/ListNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/RegistrationFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/SlotInsertionFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/SlotsUnavailableException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/UserNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/VerificationFailedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/exception/WrongCredentialsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/flipkart/utils/DatabaseConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +239,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,10 +247,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2VQXcOTPTRcmSrc8ScGVtQK708c" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,20 +259,33 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "bhavya-dev",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "new-folder-structure",
     "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/Users/bhavya.khandelwal/Documents/JEDI-2.0-Group-B-Java-Project-POS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.flipkart.application.GymFlipFitApplication" />
+      <module name="JEDI-2.0-Group-B-FlipFit-POS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -83,6 +307,8 @@
       <option name="presentableId" value="Default" />
       <updated>1694769356617</updated>
       <workItem from="1694769358661" duration="3029000" />
+      <workItem from="1695011356824" duration="16669000" />
+      <workItem from="1695035606809" duration="259000" />
     </task>
     <task id="LOCAL-00001" summary="Added GymOwner Login and Registration">
       <option name="closed" value="true" />
@@ -92,14 +318,70 @@
       <option name="project" value="LOCAL" />
       <updated>1694771000672</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updated changes">
+      <option name="closed" value="true" />
+      <created>1695019255112</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695019255112</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updated comments">
+      <option name="closed" value="true" />
+      <created>1695022977132</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695022977132</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added verification">
+      <option name="closed" value="true" />
+      <created>1695028540226</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695028540226</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added comments">
+      <option name="closed" value="true" />
+      <created>1695029356758</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695029356758</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed bug">
+      <option name="closed" value="true" />
+      <created>1695033258182</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695033258182</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added GymOwner Login and Registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added GymOwner Login and Registration" />
+    <MESSAGE value="Updated changes" />
+    <MESSAGE value="Updated comments" />
+    <MESSAGE value="Added verification" />
+    <MESSAGE value="Added comments" />
+    <MESSAGE value="Fixed bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug" />
   </component>
 </project>
