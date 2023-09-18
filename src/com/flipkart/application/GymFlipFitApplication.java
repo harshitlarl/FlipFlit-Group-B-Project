@@ -4,7 +4,9 @@ import com.flipkart.business.GymOwnerService;
 import com.flipkart.business.GymOwnerServiceOperation;
 import com.flipkart.business.UserServiceOperations;
 import com.flipkart.business.UserServices;
+import com.flipkart.utils.DatabaseConnector;
 
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -38,49 +40,59 @@ public class GymFlipFitApplication {
 
                     switch (role) {
                         case "Admin" :
-                            String admin_id = prop.getProperty("admin_id");
-                            String admin_password = prop.getProperty("admin_password");
                             GymFlipFitAdminMenu admin = new GymFlipFitAdminMenu();
-                            if(!userId.equals(admin_id) || !password.equals(admin_password)){
+
+                            if(admin.verifyAdminCredentials(userId,password)){
                                 System.out.println("Invalid Credentials");
                                 break;
                             }
-                            System.out.println("1. View all users");
-                            System.out.println("2. View all Gyms");
-                            System.out.println("3. View all Gym Owners");
-                            System.out.println("4. Verify Gym");
-                            System.out.println("5. Verify GymOwner");
-                            System.out.println("6. View pending Gyms");
-                            System.out.println("7. View pending Gym Owners");
-                            int k = Integer.parseInt(obj.nextLine());
 
-                            switch (k) {
-                                case 1 :
-                                    admin.viewUsers();
-                                    break;
-                                case 2 :
-                                    admin.viewGyms();
-                                    break;
-                                case 3 :
-                                    admin.viewGymOwners();
-                                    break;
-                                case 4 :
-                                    System.out.println("Enter the Gym Id to be verified ");
-                                    int id1 = Integer.parseInt(obj.nextLine());
-                                    admin.verifyGym(id1);
-                                    break;
-                                case 5 :
-                                    System.out.println("Enter the Gym Owner Id to be verified ");
-                                    int id2 = Integer.parseInt(obj.nextLine());
-                                    admin.verifyGymOwner(id2);
-                                    break;
-                                case 6 :
-                                    admin.viewUnverifiedGyms();
-                                    break;
-                                case 7:
-                                    admin.viewUnverifiedGymOwners();
-                                    break;
+                            boolean flag = true;
 
+                            while(flag) {
+
+                                System.out.println("1. View all users");
+                                System.out.println("2. View all Gyms");
+                                System.out.println("3. View all Gym Owners");
+                                System.out.println("4. Verify Gym");
+                                System.out.println("5. Verify GymOwner");
+                                System.out.println("6. View pending Gyms");
+                                System.out.println("7. View pending Gym Owners");
+                                System.out.println("8. Exit");
+
+                                int k = Integer.parseInt(obj.nextLine());
+
+                                switch (k) {
+                                    case 1:
+                                        admin.viewUsers();
+                                        break;
+                                    case 2:
+                                        admin.viewGyms();
+                                        break;
+                                    case 3:
+                                        admin.viewGymOwners();
+                                        break;
+                                    case 4:
+                                        System.out.println("Enter the Gym Id to be verified ");
+                                        int id1 = Integer.parseInt(obj.nextLine());
+                                        admin.verifyGym(id1);
+                                        break;
+                                    case 5:
+                                        System.out.println("Enter the Gym Owner Id to be verified ");
+                                        int id2 = Integer.parseInt(obj.nextLine());
+                                        admin.verifyGymOwner(id2);
+                                        break;
+                                    case 6:
+                                        admin.viewUnverifiedGyms();
+                                        break;
+                                    case 7:
+                                        admin.viewUnverifiedGymOwners();
+                                        break;
+                                    case 8:
+                                        flag = false;
+                                        break;
+                                }
+                                if(!flag) break;
                             }
                             break;
 
@@ -125,14 +137,14 @@ public class GymFlipFitApplication {
 
                     switch (respectiveRole) {
                         case "Customer" :
-                            if(!customer.userLogin(user,userPassword))
+                            if(!customer.validateUser(user,userPassword))
                                 System.out.println("Invalid credentials");
                             else{
                                 userService.updateGymUserPassword(user,userPassword, updatedPassword);
                             }
                             break;
                         case "GymOwner" :
-                            if(!owner.gymOwnerLogin(user,userPassword)){
+                            if(!owner.verifyGymOwner(user,userPassword)){
                                 System.out.println("Invalid credentials");
                             }
                             else{

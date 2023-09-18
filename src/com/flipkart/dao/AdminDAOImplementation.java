@@ -3,30 +3,38 @@ package com.flipkart.dao;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
+//<<<<<<< HEAD
 import com.flipkart.exception.VerificationFailedException;
+//=======
+import com.flipkart.constants.SQLConstants;
+//>>>>>>> 53ab4ebe3c2584fb07f94de92416cd4e536a5785
 import com.flipkart.utils.DatabaseConnector;
+
+import java.sql.Connection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDAOImplementation implements AdminDAOInterface {
-    DatabaseConnector connector ;
+    DatabaseConnector connector;
     Connection conn;
-    @Override
-    public void viewGyms()  {
-        Statement statement = null;
-        ResultSet resultSet = null;
-        conn = DatabaseConnector.getConnection();
-        try {
-            statement = conn.createStatement();
 
-            String sqlQuery = "SELECT * FROM gyms";
-            resultSet = statement.executeQuery(sqlQuery);
+    @Override
+    public void viewGyms() {
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            conn = DatabaseConnector.getConnection();
+            String sqlQuery = SQLConstants.ADMIN_VIEW_ALL_GYMS;
+            //preparedStatement = conn.prepareStatement(SQLConstants.ADMIN_VIEW_ALL_USERS);
+            preparedStatement = conn.prepareStatement(sqlQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
                 int id = resultSet.getInt("gymId");
-                int ownerId = resultSet.getInt("ownerId");
-                String name = resultSet.getString("name");
+                String ownerId = resultSet.getString("ownerId");
+                String name = resultSet.getString("gymName");
                 String gymAddress = resultSet.getString("gymAddress");
                 String location = resultSet.getString("location");
                 String status = resultSet.getString("status");
@@ -47,19 +55,21 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
     @Override
     public void viewUsers() {
-        Statement statement = null;
-        ResultSet resultSet = null;
-        conn = DatabaseConnector.getConnection();
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
         try {
-            statement = conn.createStatement();
+            conn = DatabaseConnector.getConnection();
+            System.out.println("Debug3");
+            preparedStatement = conn.prepareStatement(SQLConstants.ADMIN_VIEW_ALL_USERS);
 
-            String sqlQuery = "SELECT * FROM users";
-            resultSet = statement.executeQuery(sqlQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println("Debug");
+
             while (resultSet.next()) {
                 int id = resultSet.getInt("userId");
-                int phoneNo = resultSet.getInt("phoneNumber");
+                String phoneNo = resultSet.getString("phoneNumber");
                 String name = resultSet.getString("userName");
-                String address = resultSet.getString("address");
+                String address = resultSet.getString("Address");
                 String loc = resultSet.getString("location");
                 String email = resultSet.getString("email");
 
@@ -80,28 +90,29 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
     @Override
     public void viewGymOwners() {
-        Statement statement = null;
-        ResultSet resultSet = null;
-        conn = DatabaseConnector.getConnection();
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
         try {
-            statement = conn.createStatement();
 
-            String sqlQuery = "SELECT * FROM gymOwners";
-            resultSet = statement.executeQuery(sqlQuery);
+            conn = DatabaseConnector.getConnection();
+            System.out.println("Debug3");
+            preparedStatement = conn.prepareStatement(SQLConstants.ADMIN_VIEW_ALL_GYMOWNERS);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
             while (resultSet.next()) {
-                int id = resultSet.getInt("gymOwnerId");
-                int phoneNo = resultSet.getInt("phoneNumber");
-                String name = resultSet.getString("userName");
-                String address = resultSet.getString("address");
+                int id = resultSet.getInt("id");
+                String phoneNo = resultSet.getString("phone_number");
+                String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
-                String adhaar = resultSet.getString("adhaarNumber");
-                String pan = resultSet.getString("panNumber");
+                String adhaar = resultSet.getString("aadhar");
+                String pan = resultSet.getString("pancard");
 
                 // Print the data or perform any other operations you need
                 System.out.println("Gym ID: " + id);
                 System.out.println("Name: " + name);
                 System.out.println("Phone No : " + phoneNo);
-                System.out.println("Address : " + address);
+
                 System.out.println("Email Id : " + email);
                 System.out.println("Adhaar no : " + adhaar);
                 System.out.println("PAN Card Number : " + pan);
@@ -120,14 +131,14 @@ public class AdminDAOImplementation implements AdminDAOInterface {
         PreparedStatement preparedStatement = null;
         try {
             //TODO -> for each onwer, update their status as verified.
-            String query = "UPDATE gymOwners set STATUS = ? where gymOwnerId = ? ";
+            String query = SQLConstants.ADMIN_VERIFY_GYMOWNERS;
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, "verified"); // set input parameter 1
             pstmt.setString(2, Integer.toString(id)); // set input parameter 2
             int stats = pstmt.executeUpdate(); // execute update statement
             //conn.commit();
 
-            if(stats > 0 ) {
+            if (stats > 0) {
                 System.out.println("Verified GymOwner successfully");
             } else {
                 throw new VerificationFailedException();
@@ -150,14 +161,14 @@ public class AdminDAOImplementation implements AdminDAOInterface {
         conn = DatabaseConnector.getConnection();
         try {
             //TODO -> for each onwer, update their status as verified.
-            String query = "UPDATE gyms set STATUS = ? where gymId = ? ";
+            String query = SQLConstants.ADMIN_VERIFY_GYMS;
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setString(1, "verified"); // set input parameter 1
             pstmt.setString(2, Integer.toString(id)); // set input parameter 2
             int stats = pstmt.executeUpdate(); // execute update statement
             //conn.commit();
 
-            if(stats > 0 ) {
+            if (stats > 0) {
                 System.out.println("Verified Gym successfully");
             } else {
                 throw new VerificationFailedException();
@@ -182,7 +193,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
         List<Gym> gyms = new ArrayList<>();
 
         try {
-            String sqlQuery = "SELECT * FROM gyms WHERE status=?";
+            String sqlQuery = SQLConstants.ADMIN_VIEW_UNVERIFIED_GYMS;
             preparedStatement = conn.prepareStatement(sqlQuery);
             preparedStatement.setString(1, "Unverified");
             resultSet = preparedStatement.executeQuery();
@@ -193,8 +204,9 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String location = resultSet.getString("location");
                 String gymName = resultSet.getString("gymName");
                 String status = resultSet.getString("status");
-                String gymOwnerID = resultSet.getString("id");
+                String gymOwnerID = resultSet.getString("ownerId");
                 Gym gym = new Gym();
+                gym.setGymId(id);
                 gym.setGymName(gymName);
                 gym.setGymAddress(gymAddress);
                 gym.setOwnerId(gymOwnerID);
@@ -216,21 +228,22 @@ public class AdminDAOImplementation implements AdminDAOInterface {
         List<GymOwner> gymOwners = new ArrayList<>();
 
         try {
-            String sqlQuery = "SELECT * FROM gymOwners WHERE status=?";
+            String sqlQuery = SQLConstants.ADMIN_VIEW_UNVERIFIED_GYMOWNER;
             preparedStatement = conn.prepareStatement(sqlQuery);
             preparedStatement.setString(1, "Unverified");
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("gymOwnerId");
-                String gymOwnerID = resultSet.getString("ownerId");
-                String email = resultSet.getString("ownerEmail");
-                String ph = resultSet.getString("phoneNo");
-                String nationalId = resultSet.getString("nationalId");
-                String gst = resultSet.getString("GST");
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String ph = resultSet.getString("phone_number");
+                String nationalId = resultSet.getString("aadhar");
+                String gst = resultSet.getString("gst");
 
                 GymOwner x = new GymOwner();
                 x.setOwnerId(id);
+                x.setOwnerName(name);
                 x.setOwnerEmail(email);
                 x.setPhoneNo(ph);
                 x.setNationalId(nationalId);

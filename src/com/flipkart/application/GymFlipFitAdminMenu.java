@@ -7,8 +7,12 @@ import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
 import com.flipkart.business.AdminService;
 import com.flipkart.business.AdminServiceOperation;
+import com.flipkart.utils.DatabaseConnector;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 import java.util.ArrayList;
@@ -50,5 +54,22 @@ public class GymFlipFitAdminMenu {
             System.out.println("GymOwner " + x + ": Id " + gymOwner.getOwnerId() + " Email: " + gymOwner.getOwnerEmail() + " Phone No: " + gymOwner.getPhoneNo());
             x++;
         }
+    }
+
+    public boolean verifyAdminCredentials(String id, String pass) {
+        try {
+            Properties prop = new Properties(); //Properties is used to read files
+            InputStream inputStream = DatabaseConnector.class.getClassLoader().getResourceAsStream("./config.properties");
+            prop.load(inputStream);
+            String admin_id = prop.getProperty("admin_id");
+            String admin_password = prop.getProperty("admin_password");
+
+            return (id == admin_id && admin_password == pass );
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+
     }
 }
