@@ -67,6 +67,7 @@ public class GymFlipFitAdminMenu {
             return (id == admin_id && admin_password == pass );
         }
         catch(Exception e){
+            System.out.println(e.getMessage());
             return false;
         }
 
