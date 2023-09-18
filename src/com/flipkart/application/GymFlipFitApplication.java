@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
 
+import static com.flipkart.constants.ColorConstants.*;
+
 public class GymFlipFitApplication {
     static GymFlipFitGymOwnerMenu owner = new GymFlipFitGymOwnerMenu();
     static GymFlipFitCustomerMenu customer = new GymFlipFitCustomerMenu();
@@ -26,9 +28,9 @@ public class GymFlipFitApplication {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("------------------------------------------------------------------");
+        System.out.println(ANSI_CYAN + "------------------------------------------------------------------");
         System.out.println("        Welcome to FlipFit application for slot booking!");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------" + ANSI_RESET);
         boolean exitFlag = false;
         while(true) {
             System.out.println("================================");
@@ -52,7 +54,7 @@ public class GymFlipFitApplication {
                             GymFlipFitAdminMenu admin = new GymFlipFitAdminMenu();
 
                             if(!admin.verifyAdminCredentials(userId,password)){
-                                System.out.println("Invalid Credentials");
+                                System.out.println(ANSI_YELLOW + "Invalid Credentials"+ANSI_RESET);
                                 break;
                             }
 
@@ -107,16 +109,16 @@ public class GymFlipFitApplication {
 
                         case "Customer" :
                             if(!customer.userLogin(userId,password))
-                                System.out.println("Invalid credentials");
+                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
                             break;
                         case "GymOwner" :
                             if(!owner.gymOwnerLogin(userId,password)){
-                                System.out.println("Invalid credentials");
+                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
                             }
 
                             break;
                         default:
-                            System.out.println("Invalid Options Selected. Please Try Again:(");
+                            System.out.println(ANSI_YELLOW+"Invalid Options Selected. Please Try Again:("+ANSI_RESET);
                             break;
 
                     }
@@ -151,14 +153,14 @@ public class GymFlipFitApplication {
                     switch (respectiveRole) {
                         case "Customer" :
                             if(!customer.validateUser(user,userPassword))
-                                System.out.println("Invalid credentials");
+                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
                             else{
                                 userService.updateGymUserPassword(user,userPassword, updatedPassword);
                             }
                             break;
                         case "GymOwner" :
                             if(!owner.verifyGymOwner(user,userPassword)){
-                                System.out.println("Invalid credentials");
+                                System.out.println(ANSI_YELLOW+"Invalid credentials"+ANSI_RESET);
                             }
                             else{
                                 gymOwnerService.updateGymOwnerPassword(user,userPassword, updatedPassword);
@@ -173,7 +175,7 @@ public class GymFlipFitApplication {
                     System.out.println("Thank you for using FlipFit :)");
                     break;
                 default:
-                    System.out.println("Invalid Options Selected. Please Try Again:(");
+                    System.out.println(ANSI_YELLOW+"Invalid Options Selected. Please Try Again:( "+ANSI_RESET);
                     break;
                 }
             if(exitFlag)break;
