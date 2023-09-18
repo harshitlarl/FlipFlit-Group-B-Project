@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.flipkart.constants.ColorConstants.ANSI_RESET;
+import static com.flipkart.constants.ColorConstants.ANSI_YELLOW;
+
 public class GymFlipFitGymOwnerMenu {
 
     GymOwnerService gymOwnerService = new GymOwnerServiceOperation();
@@ -91,10 +94,19 @@ public class GymFlipFitGymOwnerMenu {
         String phoneNo = obj.nextLine();
         System.out.println("\nNation ID/ Aadhaar Number: ");
         String nationalId = obj.nextLine();
+        if(nationalId.length() != 12) {
+            System.out.println(ANSI_YELLOW + "Invalid Adhaar No. Enter a valid adhaar!"+ ANSI_RESET);
+            return;
+        }
         System.out.println("\nGST: ");
         String GST = obj.nextLine();
         System.out.println("\nPAN Details: ");
         String PAN = obj.nextLine();
+        if(PAN.length() != 10) {
+            System.out.println(ANSI_YELLOW + "Invalid Pan Card No. Enter a valid Pan Card No!" +  ANSI_RESET);
+            return ;
+        }
+
 
 
         GymOwner gymOwner = new GymOwner();

@@ -20,13 +20,15 @@ public class GymFlipFitApplication {
 
     static Properties prop = new Properties();
     public static void main(String[] args) {
-        System.out.println("Welcome to FlipFit application for slot booking!");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("        Welcome to FlipFit application for slot booking!");
+        System.out.println("--------------------------------------------------------------------");
         boolean exitFlag = false;
         while(true) {
-            System.out.println("1. Login");
-            System.out.println("2. Registration");
-            System.out.println("3. Update Password");
-            System.out.println("4. Exit");
+            System.out.println("Press 1 for Login");
+            System.out.println("Press 2 for Registration");
+            System.out.println("Press 3 for Update Password");
+            System.out.println("Press 4 for Exit");
             int x = Integer.parseInt(obj.nextLine());
             switch (x) {
                 case 1 :
@@ -51,14 +53,14 @@ public class GymFlipFitApplication {
 
                             while(flag) {
 
-                                System.out.println("1. View all users");
-                                System.out.println("2. View all Gyms");
-                                System.out.println("3. View all Gym Owners");
-                                System.out.println("4. Verify Gym");
-                                System.out.println("5. Verify GymOwner");
-                                System.out.println("6. View pending Gyms");
-                                System.out.println("7. View pending Gym Owners");
-                                System.out.println("8. Exit");
+                                System.out.println("Press 1 for View all users");
+                                System.out.println("Press 2 for View all Gyms");
+                                System.out.println("Press 3 for View all Gym Owners");
+                                System.out.println("Press 4 for Verify Gym");
+                                System.out.println("Press 5 for Verify GymOwner");
+                                System.out.println("Press 6 for View pending Gyms");
+                                System.out.println("Press 7 for View pending Gym Owners");
+                                System.out.println("Press 8 for Exit");
 
                                 int k = Integer.parseInt(obj.nextLine());
 
@@ -106,13 +108,17 @@ public class GymFlipFitApplication {
                             }
 
                             break;
+                        default:
+                            System.out.println("Invalid Options Selected. Please Try Again:(");
+                            break;
+
                     }
 
                     break;
                 case 2 :
-                    System.out.println("1. Register as a Customer");
-                    System.out.println("2. Register as a Gym Owner");
-                    System.out.println("3. Back");
+                    System.out.println("Press 1 to Register as a Customer");
+                    System.out.println("Press 2 to Register as a Gym Owner");
+                    System.out.println("Press 3 to Go Back");
                     int k = Integer.parseInt(obj.nextLine());
                     switch(k){
                         case 1:
@@ -158,6 +164,9 @@ public class GymFlipFitApplication {
                     //end
                     exitFlag = true;
                     System.out.println("Thank you for using FlipFit :)");
+                    break;
+                default:
+                    System.out.println("Invalid Options Selected. Please Try Again:(");
                     break;
                 }
             if(exitFlag)break;

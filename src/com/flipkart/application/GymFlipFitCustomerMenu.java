@@ -19,12 +19,12 @@ public class GymFlipFitCustomerMenu {
             System.out.println("Login Successful");
             while(flag){
                 System.out.println("Login Successful");
-                System.out.println("1. View all Gyms with slots");
-                System.out.println("2. Book Slot");
-                System.out.println("3. Cancel Slot");
-                System.out.println("4. View all Bookings");
-                System.out.println("5. View all Gyms by Area");
-                System.out.println("6. Logout");
+                System.out.println("Press 1 to View all Gyms with slots");
+                System.out.println("Press 2 to Book Slot");
+                System.out.println("Press 3 to Cancel Slot");
+                System.out.println("Press 4 to View all Bookings");
+                System.out.println("Press 5 to View all Gyms by Area");
+                System.out.println("Press 6 to Logout");
                 int choice = Integer.parseInt(obj.nextLine());
                 switch(choice){
                     case 1:
