@@ -1,5 +1,9 @@
 package com.flipkart.constants;
 
+/**
+ * This class defines ANSI color constants for console text color formatting.
+ * Author: Avinash
+ */
 public class ColorConstants {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
