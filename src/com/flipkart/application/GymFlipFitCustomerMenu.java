@@ -1,9 +1,7 @@
 package com.flipkart.application;
 import java.util.*;
-import com.flipkart.bean.Bookings;
-import com.flipkart.bean.Gym;
-import com.flipkart.bean.GymOwner;
-import com.flipkart.bean.User;
+
+import com.flipkart.bean.*;
 import com.flipkart.business.UserServiceOperations;
 
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ public class GymFlipFitCustomerMenu {
             boolean flag = true;
             System.out.println("Login Successful");
             while(flag){
-                System.out.println("Login Successful");
+                System.out.println("=========CUSTOMER MENU=========");
                 System.out.println("1. View all Gyms with slots");
                 System.out.println("2. Book Slot");
                 System.out.println("3. Cancel Slot");
@@ -29,7 +27,13 @@ public class GymFlipFitCustomerMenu {
                 switch(choice){
                     case 1:
                         List<Gym> x = viewAllGymswithSlots();
-                        System.out.println(x.size());
+                        for(Gym gym:x){
+                            System.out.println("Gym name: " + gym.getGymName() + " Gym ID: " + gym.getGymId() + " Gym Location: " + gym.getLocation() + " Gym Address: " + gym.getGymAddress());
+                            System.out.println("Slot List");
+                            for(Slots slot: gym.getSlots()) {
+                                System.out.println(" Slot start time: "  + slot.getStartTime() + " Slot end time: " + (slot.getStartTime() + 1) + " Remaining seat count: " + slot.getSeatCount());
+                            }
+                        }
                         break;
                     case 2:
                         System.out.println("Enter the following:");
@@ -48,6 +52,7 @@ public class GymFlipFitCustomerMenu {
                         break;
                     case 3:
                         Scanner sc=new Scanner(System.in);
+                        System.out.println("My Bookings");
                         System.out.println(viewAllBookings(username));
                         System.out.println("Enter Booking ID");
                         int bookingId=sc.nextInt();
@@ -55,8 +60,10 @@ public class GymFlipFitCustomerMenu {
                         break;
                     case 4:
                         System.out.println("My Bookings");
-
-                        System.out.println(viewAllBookings(username));
+                        List<Bookings> bookings = viewAllBookings(username);
+                        for(Bookings booking:bookings ){
+                            System.out.println("Booking ID: " + booking.getBookingId() + " Booking Status: " + booking.getStatus() + " Time: " + booking.getTime() + " GymID: " + booking.getGymId());
+                        }
                         break;
                     case 5:
 
@@ -93,7 +100,6 @@ public class GymFlipFitCustomerMenu {
         return userServiceOperation.cancelSlots(bookingId);
     }
     public List<Bookings> viewAllBookings(String userid){
-        System.out.println("My Bookings");
         List<Bookings> myBookings = userServiceOperation.getAllBookings(userid);
         return myBookings;
     }
