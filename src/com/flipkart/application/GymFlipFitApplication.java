@@ -31,6 +31,7 @@ public class GymFlipFitApplication {
         System.out.println("--------------------------------------------------------------------");
         boolean exitFlag = false;
         while(true) {
+            System.out.println("================================");
             System.out.println("Press 1 for Login");
             System.out.println("Press 2 for Registration");
             System.out.println("Press 3 for Update Password");
@@ -50,7 +51,7 @@ public class GymFlipFitApplication {
                         case "Admin" :
                             GymFlipFitAdminMenu admin = new GymFlipFitAdminMenu();
 
-                            if(admin.verifyAdminCredentials(userId,password)){
+                            if(!admin.verifyAdminCredentials(userId,password)){
                                 System.out.println("Invalid Credentials");
                                 break;
                             }

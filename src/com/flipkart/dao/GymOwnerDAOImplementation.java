@@ -129,10 +129,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDaoInterface {
 
             if (result.next()) {
                 return true;
-            } else {
-                return false;
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
 //            throw new RuntimeException(e);
