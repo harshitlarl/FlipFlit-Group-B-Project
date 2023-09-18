@@ -14,18 +14,38 @@ import java.util.Scanner;
 import static com.flipkart.constants.ColorConstants.ANSI_RESET;
 import static com.flipkart.constants.ColorConstants.ANSI_YELLOW;
 
+/**
+ * This class represents the Gym Owner menu for the GymFlipFit application.
+ * It provides various functions for gym owners such as adding gyms and managing gym information.
+ * Author: bhavya.khandelwal
+ */
 public class GymFlipFitGymOwnerMenu {
 
     GymOwnerService gymOwnerService = new GymOwnerServiceOperation();
     static Scanner obj = new Scanner(System.in);
 
-    boolean verifyGymOwner(String email, String password){
+    /**
+     * Verify the gym owner's login credentials.
+     *
+     * @param email    The email of the gym owner.
+     * @param password The password of the gym owner.
+     * @return True if login is successful, false otherwise.
+     */
+    boolean verifyGymOwner(String email, String password) {
         return gymOwnerService.validateLogin(email, password);
     }
-    boolean gymOwnerLogin(String email, String password){
-        if(gymOwnerService.validateLogin(email, password)){
+
+    /**
+     * Perform gym owner login and display the gym owner menu.
+     *
+     * @param email    The email of the gym owner.
+     * @param password The password of the gym owner.
+     * @return True if login is successful, false otherwise.
+     */
+    boolean gymOwnerLogin(String email, String password) {
+        if (gymOwnerService.validateLogin(email, password)) {
             System.out.println("Login Successful");
-            while(true){
+            while (true) {
                 System.out.println("Gym Owner menu--------------------");
                 System.out.println("1. Add a gym");
                 System.out.println("2. View all gyms");
@@ -43,11 +63,15 @@ public class GymFlipFitGymOwnerMenu {
                         return true;
                 }
             }
-        }
-        else return false;
-
+        } else return false;
     }
-    void addGym(String userId){
+
+    /**
+     * Add a gym with slots.
+     *
+     * @param userId The ID of the gym owner.
+     */
+    void addGym(String userId) {
         Gym gym = new Gym();
 
         System.out.println("Enter the following info:");
@@ -66,23 +90,26 @@ public class GymFlipFitGymOwnerMenu {
         System.out.println("\nHow many slots to be entered?");
         int slotNo = Integer.parseInt(obj.nextLine());
         int x = 1;
-        while(slotNo != 0){
+        while (slotNo != 0) {
             System.out.println("Add slot no. " + x++ + "\n");
             System.out.println("\nEnter start time:");
             int startTime = Integer.parseInt(obj.nextLine());
             System.out.println("\nEnter available seats:");
             int number = Integer.parseInt(obj.nextLine());
-            Slots slot = new Slots(x-1,startTime,number);
+            Slots slot = new Slots(x - 1, startTime, number);
             slots.add(slot);
             slotNo--;
         }
         gym.setSlots(slots);
         gym.setOwnerId(userId);
 
-
         gymOwnerService.addGymWithSlots(gym);
     }
-    void createGymOwner(){
+
+    /**
+     * Create a new gym owner.
+     */
+    void createGymOwner() {
         System.out.println("Enter the following info:");
         System.out.println("\nYour email: ");
         String ownerEmail = obj.nextLine();
@@ -94,20 +121,18 @@ public class GymFlipFitGymOwnerMenu {
         String phoneNo = obj.nextLine();
         System.out.println("\nNation ID/ Aadhaar Number: ");
         String nationalId = obj.nextLine();
-        if(nationalId.length() != 12) {
-            System.out.println(ANSI_YELLOW + "Invalid Adhaar No. Enter a valid adhaar!"+ ANSI_RESET);
+        if (nationalId.length() != 12) {
+            System.out.println(ANSI_YELLOW + "Invalid Adhaar No. Enter a valid adhaar!" + ANSI_RESET);
             return;
         }
         System.out.println("\nGST: ");
         String GST = obj.nextLine();
         System.out.println("\nPAN Details: ");
         String PAN = obj.nextLine();
-        if(PAN.length() != 10) {
-            System.out.println(ANSI_YELLOW + "Invalid Pan Card No. Enter a valid Pan Card No!" +  ANSI_RESET);
-            return ;
+        if (PAN.length() != 10) {
+            System.out.println(ANSI_YELLOW + "Invalid Pan Card No. Enter a valid Pan Card No!" + ANSI_RESET);
+            return;
         }
-
-
 
         GymOwner gymOwner = new GymOwner();
         List<Gym> emptyGymList = new ArrayList<>();
@@ -121,19 +146,22 @@ public class GymFlipFitGymOwnerMenu {
         gymOwner.setGyms(emptyGymList);
         gymOwner.setStatus("Unverified");
 
-
-//        gymOwners.put(ownerEmail,gymOwner);
         gymOwnerService.createGymOwner(gymOwner);
     }
 
-    void displayGyms(String userId){
-        List<Gym> gymsList= gymOwnerService.viewMyGyms(userId);
+    /**
+     * Display all gyms owned by the gym owner.
+     *
+     * @param userId The ID of the gym owner.
+     */
+    void displayGyms(String userId) {
+        List<Gym> gymsList = gymOwnerService.viewMyGyms(userId);
         int x = 1;
-        for(Gym gym:gymsList){
-            System.out.println("Gym " + x + ": Name " + gym.getGymName() + "     Address: " + gym.getGymAddress() + "       Location: " + gym.getLocation() );
+        for (Gym gym : gymsList) {
+            System.out.println("Gym " + x + ": Name " + gym.getGymName() + "     Address: " + gym.getGymAddress() + "       Location: " + gym.getLocation());
             System.out.println("Slots: ");
-            for(Slots slot:gym.getSlots()){
-                System.out.println("Slot: " + slot.getSlotsId() + " Slot Time: " + slot.getStartTime() + " - " + (slot.getStartTime() + 1) + " Seats: " + slot.getSeatCount() );
+            for (Slots slot : gym.getSlots()) {
+                System.out.println("Slot: " + slot.getSlotsId() + " Slot Time: " + slot.getStartTime() + " - " + (slot.getStartTime() + 1) + " Seats: " + slot.getSeatCount());
             }
             x++;
         }
