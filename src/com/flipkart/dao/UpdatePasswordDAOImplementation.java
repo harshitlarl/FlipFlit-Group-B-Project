@@ -131,6 +131,10 @@ public class UpdatePasswordDAOImplementation implements UpdatePasswordDAOInterfa
             ResultSet result = preparedStatement.executeQuery();
 
             if (result.next()) {
+                if(result.getString("status").equals("Unverified")){
+                    System.out.println("Unverified User, please contact admin to verify");
+                    return false;
+                }
                 return true;
             } else {
                 return false;

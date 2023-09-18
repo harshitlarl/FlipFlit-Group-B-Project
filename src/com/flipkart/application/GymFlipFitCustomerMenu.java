@@ -39,14 +39,8 @@ public class GymFlipFitCustomerMenu {
                 int choice = Integer.parseInt(obj.nextLine());
                 switch (choice) {
                     case 1:
-                        List<Gym> x = viewAllGymswithSlots();
-                        for (Gym gym : x) {
-                            System.out.println("Gym name: " + gym.getGymName() + " Gym ID: " + gym.getGymId() + " Gym Location: " + gym.getLocation() + " Gym Address: " + gym.getGymAddress());
-                            System.out.println("Slot List");
-                            for (Slots slot : gym.getSlots()) {
-                                System.out.println(" Slot start time: " + slot.getStartTime() + " Slot end time: " + (slot.getStartTime() + 1) + " Remaining seat count: " + slot.getSeatCount());
-                            }
-                        }
+                        List<Gym> gyms = viewAllGymswithSlots();
+                        printGyms(gyms);
                         break;
                     case 2:
                         System.out.println("Enter the following:");
@@ -78,7 +72,8 @@ public class GymFlipFitCustomerMenu {
                         break;
                     case 5:
                         String location = "bangalore"; // You can modify this to take user input for location.
-                        System.out.println(viewAllGymsByArea(location));
+                        List<Gym> gyms2 = viewAllGymsByArea(location);
+                        printGyms(gyms2);
                         break;
                     case 6:
                         flag = false;
@@ -90,6 +85,21 @@ public class GymFlipFitCustomerMenu {
 
         } else return false;
         return true;
+    }
+
+    /**
+     * Prints the lists of gyms
+     * @param y
+     */
+    private void printGyms(List<Gym> y) {
+        for (Gym gym : y) {
+            System.out.println("====================");
+            System.out.println("Gym name: " + gym.getGymName() + " Gym ID: " + gym.getGymId() + " Gym Location: " + gym.getLocation() + " Gym Address: " + gym.getGymAddress());
+            System.out.println("Slot List");
+            for (Slots slot : gym.getSlots()) {
+                System.out.println(" Slot start time: " + slot.getStartTime() + " Slot end time: " + (slot.getStartTime() + 1) + " Remaining seat count: " + slot.getSeatCount());
+            }
+        }
     }
 
     /**
