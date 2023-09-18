@@ -3,11 +3,10 @@ package com.flipkart.dao;
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.Slots;
-//<<<<<<< HEAD
+
 import com.flipkart.exception.VerificationFailedException;
-//=======
+
 import com.flipkart.constants.SQLConstants;
-//>>>>>>> 53ab4ebe3c2584fb07f94de92416cd4e536a5785
 import com.flipkart.utils.DatabaseConnector;
 
 import java.sql.Connection;
