@@ -80,16 +80,15 @@ public class AdminController {
     @Produces(MediaType.APPLICATION_JSON)
     public Response verifyGym(@PathParam("id") Integer id){
        String res =  adminService.verifyGym(id);
-       System.out.println(res);
         return Response.ok(res).build();
     }
 
-    @GET
+    @PUT
     @Path("/verifyGymOwner/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response verifyGymOwner(@PathParam("id") Integer id){
-        adminService.verifyGymOwner(id);
-        return Response.ok().build();
+        String res =adminService.verifyGymOwner(id);
+        return Response.ok(res).build();
     }
 
     @GET

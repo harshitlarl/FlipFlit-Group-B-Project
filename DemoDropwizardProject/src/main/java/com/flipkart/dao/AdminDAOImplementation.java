@@ -177,7 +177,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
             if (stats > 0) {
                 System.out.println("Verified GymOwner successfully");
-                return "Success";
+                return "Verified GymOwner successfully";
             } else {
                 throw new VerificationFailedException();
 //                System.out.println("Gym Owner verification failed");
@@ -206,7 +206,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
             if (stats > 0) {
                 System.out.println("Verified Gym successfully");
-                return "Success";
+                return "Verified Gym successfully";
             } else {
                 throw new VerificationFailedException();
 //                System.out.println("Gym Owner verification failed");
