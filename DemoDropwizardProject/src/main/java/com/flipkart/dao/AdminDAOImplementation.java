@@ -276,7 +276,8 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String ph = resultSet.getString("phone_number");
                 String nationalId = resultSet.getString("aadhar");
                 String gst = resultSet.getString("gst");
-
+                String pan = resultSet.getString("pancard");
+                String status = resultSet.getString("status");
                 GymOwner x = new GymOwner();
                 x.setOwnerId(id);
                 x.setOwnerName(name);
@@ -284,8 +285,11 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 x.setPhoneNo(ph);
                 x.setNationalId(nationalId);
                 x.setGST(gst);
-
+                x.setPAN(pan);
+                x.setVerificationStatus(status);
+                x.setStatus(status);
                 gymOwners.add(x);
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
