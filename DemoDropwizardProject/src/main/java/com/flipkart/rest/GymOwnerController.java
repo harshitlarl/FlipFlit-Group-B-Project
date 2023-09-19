@@ -55,15 +55,4 @@ public class GymOwnerController {
         List<Gym> gymList = gymOwnerService.viewMyGyms(id);
         return Response.ok(gymList).build();
     }
-
-//    @POST
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Path("/viewMyGyms/{id}")
-//    public Response updateGymOwnerPassword(@PathParam("id") String id){
-//        gymOwnerService.viewMyGyms(id);
-//        return Response.ok().build();
-//    }
-
-
-
 }

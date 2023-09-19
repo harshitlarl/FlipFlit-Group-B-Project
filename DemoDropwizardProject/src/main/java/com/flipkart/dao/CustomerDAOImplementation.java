@@ -209,9 +209,9 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
         List<Bookings> bookings = new ArrayList<>();
 
         try {
-            String sqlQuery = "DELETE * FROM Booking where bookingId=" + bookingId;
+            String sqlQuery = "DELETE FROM Booking where bookingId=" + bookingId;
             preparedStatement = conn.prepareStatement(sqlQuery);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
