@@ -98,12 +98,13 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("---------------------------------");
 
                 User u = new User();
-                u.setuserId(id);
+                u.setUserId(id);
                 u.setUserName(name);
                 u.setPhoneNumber(phoneNo);
                 u.setAddress(address);
                 u.setEmail(email);
                 u.setLocation(loc);
+                users.add(u);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -152,6 +153,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 gm.setNationalId(adhaar);
                 gm.setPAN(pan);
                 gm.setStatus(statusGymOwner);
+                gymOwners.add(gm);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

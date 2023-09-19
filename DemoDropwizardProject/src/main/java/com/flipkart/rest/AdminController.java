@@ -1,7 +1,9 @@
 package com.flipkart.rest;
 
 import com.flipkart.bean.Credentials;
+import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.User;
 import com.flipkart.business.AdminService;
 import com.flipkart.utils.DatabaseConnector;
 import jakarta.validation.Validator;
@@ -60,24 +62,26 @@ public class AdminController {
     @Path("/viewGyms")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewGyms(){
-        adminService.viewGyms();
-        return Response.ok().build();
+        List<Gym> gyms =  adminService.viewGyms();
+
+        return Response.ok(gyms).build();
     }
 
     @GET
     @Path("/viewUsers")
     @Produces(MediaType.APPLICATION_JSON)
     public Response viewUsers(){
-        adminService.viewUsers();
-        return Response.ok().build();
+        List<User> users = adminService.viewUsers();
+        return Response.ok(users).build();
     }
 
-    @GET
+    @PUT
     @Path("/verifyGym/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response verifyGym(@PathParam("id") Integer id){
-        adminService.verifyGym(id);
-        return Response.ok().build();
+       String res =  adminService.verifyGym(id);
+       System.out.println(res);
+        return Response.ok(res).build();
     }
 
     @GET
@@ -92,15 +96,15 @@ public class AdminController {
     @Path("/getUnverifiedGymOwners")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUnverifiedGymOwners(){
-        adminService.getUnverifiedGymOwners();
-        return Response.ok().build();
+        List<GymOwner> uv =  adminService.getUnverifiedGymOwners();
+        return Response.ok(uv).build();
     }
 
     @GET
     @Path("/getUnverifiedGyms")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUnverifiedGyms(){
-        adminService.getUnverifiedGyms();
-        return Response.ok().build();
+        List<Gym> gym = adminService.getUnverifiedGyms();
+        return Response.ok(gym).build();
     }
 }
