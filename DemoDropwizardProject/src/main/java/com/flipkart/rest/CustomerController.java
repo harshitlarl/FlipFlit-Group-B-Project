@@ -14,6 +14,7 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/user")
+@Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerController {
     Validator validator;
@@ -29,7 +30,7 @@ public class CustomerController {
     @Path("/login")
     public Response login(Credentials credentials){
         if(userServices.validateUser(credentials.getUser(),credentials.getPassword())){
-            return Response.ok().build();
+            return Response.ok("Login Successful").build();
         }
         else return Response.status(Response.Status.UNAUTHORIZED).build();
     }
@@ -44,7 +45,7 @@ public class CustomerController {
         else return Response.status(Response.Status.NOT_FOUND).build();
     }
 
-    @GET
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("bookSlot/gymId/{id}/time/{time}/email/{email}")
     public Response bookSlot(@PathParam("id") Integer gymId, @PathParam("time") Integer time,@PathParam("email") String email){
@@ -54,7 +55,7 @@ public class CustomerController {
         else return Response.status(Response.Status.NOT_FOUND).build();
     }
 
-    @GET
+    @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/cancelSlot/{id}")
     public Response cancelSlot(@PathParam("id") Integer id){

@@ -98,7 +98,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("---------------------------------");
 
                 User u = new User();
-                u.setuserId(id);
+                u.setUserId(id);
                 u.setUserName(name);
                 u.setPhoneNumber(phoneNo);
                 u.setAddress(address);
