@@ -4,6 +4,7 @@ com/flipkart/exception/SlotsUnavailableException.class
 com/flipkart/bean/Notifications.class
 com/flipkart/business/GymOwnerServiceOperation.class
 com/flipkart/business/AdminServiceOperation.class
+com/flipkart/utils/JwtUtils.class
 com/flipkart/exception/VerificationFailedException.class
 com/flipkart/bean/User.class
 com/flipkart/business/GymOwnerService.class

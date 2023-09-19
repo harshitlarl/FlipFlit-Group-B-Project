@@ -104,6 +104,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 u.setAddress(address);
                 u.setEmail(email);
                 u.setLocation(loc);
+                u.setPassword("********");
                 users.add(u);
             }
         } catch (SQLException e) {
@@ -153,6 +154,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 gm.setNationalId(adhaar);
                 gm.setPAN(pan);
                 gm.setStatus(statusGymOwner);
+                gm.setPassword("**********");
                 gymOwners.add(gm);
             }
         } catch (SQLException e) {
