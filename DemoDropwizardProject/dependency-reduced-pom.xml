@@ -44,4 +44,7 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+  <properties>
+    <db.properties>src/main/resources/config.properties</db.properties>
+  </properties>
 </project>

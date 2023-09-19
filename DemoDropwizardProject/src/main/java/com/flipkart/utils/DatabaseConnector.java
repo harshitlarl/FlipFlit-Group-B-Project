@@ -23,15 +23,22 @@ public class DatabaseConnector {
                 return connection;
             } else {
                 try {
-                    String driver = "com.mysql.cj.jdbc.Driver";
-                    String url = "jdbc:mysql://localhost:3306/flipfit";
-                    String user = "root";
-                    String password = "bhavyakh";
+                    Properties prop = new Properties(); // Properties is used to read files
+                    java.net.URL url = ClassLoader.getSystemResource("config.properties");
+                    prop.load(url.openStream());
+                    String driver = prop.getProperty("driver");
+                    String urli = prop.getProperty("url");
+                    String user = prop.getProperty("user");
+                    String password = prop.getProperty("password");
                     Class.forName(driver);
-                    connection = DriverManager.getConnection(url, user, password);
+                    connection = DriverManager.getConnection(urli, user, password);
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

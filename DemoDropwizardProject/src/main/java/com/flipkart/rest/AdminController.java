@@ -33,9 +33,9 @@ public class AdminController {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(Credentials credentials){
         Properties prop = new Properties(); // Properties is used to read files
-        InputStream inputStream = DatabaseConnector.class.getClassLoader().getResourceAsStream("./config.properties");
+        java.net.URL url = ClassLoader.getSystemResource("config.properties");
         try {
-            prop.load(inputStream);
+            prop.load(url.openStream());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
