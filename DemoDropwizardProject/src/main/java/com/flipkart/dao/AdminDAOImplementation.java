@@ -2,7 +2,9 @@ package com.flipkart.dao;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Slots;
 
+import com.flipkart.bean.User;
 import com.flipkart.exception.VerificationFailedException;
 
 import com.flipkart.constants.SQLConstants;
@@ -19,9 +21,10 @@ public class AdminDAOImplementation implements AdminDAOInterface {
     Connection conn;
 
     @Override
-    public void viewGyms() {
+    public List<Gym> viewGyms() {
         Connection conn = null;
         PreparedStatement preparedStatement = null;
+        List<Gym> gyms = new ArrayList<>();
         try {
             conn = DatabaseConnector.getConnection();
             String sqlQuery = SQLConstants.ADMIN_VIEW_ALL_GYMS;
@@ -37,6 +40,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String location = resultSet.getString("location");
                 String status = resultSet.getString("status");
 
+                Gym g = new Gym();
                 // Print the data or perform any other operations you need
                 System.out.println("Gym ID: " + id);
                 System.out.println("Name: " + name);
@@ -45,16 +49,28 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 System.out.println("Gym Location : " + location);
                 System.out.println("Status of Gym(verified or not) : " + status);
                 System.out.println("---------------------------------");
+
+                g.setGymId(id);
+                g.setGymName(name);
+                g.setOwnerId(ownerId);
+                g.setGymAddress(gymAddress);
+                g.setLocation(location);
+                g.setStatus(status);
+
+                gyms.add(g);
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return gyms;
     }
 
     @Override
-    public void viewUsers() {
+    public List<User> viewUsers() {
         Connection conn = null;
         PreparedStatement preparedStatement = null;
+        List<User> users = new ArrayList<>();
         try {
             conn = DatabaseConnector.getConnection();
             System.out.println("Debug3");
@@ -80,10 +96,19 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
                 System.out.println("Location : " + loc);
                 System.out.println("---------------------------------");
+
+                User u = new User();
+                u.setuserId(id);
+                u.setUserName(name);
+                u.setPhoneNumber(phoneNo);
+                u.setAddress(address);
+                u.setEmail(email);
+                u.setLocation(loc);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return users;
     }
 
     @Override
@@ -107,25 +132,26 @@ public class AdminDAOImplementation implements AdminDAOInterface {
                 String adhaar = resultSet.getString("aadhar");
                 String pan = resultSet.getString("pancard");
                 String statusGymOwner = resultSet.getString("status");
+
                 // Print the data or perform any other operations you need
-//                System.out.println("Gym Owner ID: " + id);
-//                System.out.println("Name: " + name);
-//                System.out.println("Phone No : " + phoneNo);
-//
-//                System.out.println("Email Id : " + email);
-//                System.out.println("Adhaar no : " + adhaar);
-//                System.out.println("PAN Card Number : " + pan);
-//                System.out.println("Status  of The Gym Owner : " + statusGymOwner);
-//
-//                System.out.println("---------------------------------");
-                GymOwner gymOwner = new GymOwner();
-                gymOwner.setOwnerId(id);
-                gymOwner.setOwnerEmail(email);
-                gymOwner.setPhoneNo(phoneNo);
-                gymOwner.setNationalId(adhaar);
-                gymOwner.setPAN(pan);
-                gymOwner.setVerificationStatus(statusGymOwner);
-                gymOwners.add(gymOwner);
+                System.out.println("Gym Owner ID: " + id);
+                System.out.println("Name: " + name);
+                System.out.println("Phone No : " + phoneNo);
+
+                System.out.println("Email Id : " + email);
+                System.out.println("Adhaar no : " + adhaar);
+                System.out.println("PAN Card Number : " + pan);
+                System.out.println("Status  of The Gym Owner : " + statusGymOwner);
+
+                System.out.println("---------------------------------");
+                GymOwner gm = new GymOwner();
+                gm.setOwnerId(id);
+                gm.setOwnerName(name);
+                gm.setPhoneNo(phoneNo);
+                gm.setOwnerEmail(email);
+                gm.setNationalId(adhaar);
+                gm.setPAN(pan);
+                gm.setStatus(statusGymOwner);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -134,7 +160,7 @@ public class AdminDAOImplementation implements AdminDAOInterface {
     }
 
     @Override
-    public void verifyGymOwners(int id) {
+    public String verifyGymOwners(int id) {
         // update the gymOwner db's status as verified.
         conn = DatabaseConnector.getConnection();
         PreparedStatement preparedStatement = null;
@@ -149,23 +175,22 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
             if (stats > 0) {
                 System.out.println("Verified GymOwner successfully");
+                return "Success";
             } else {
                 throw new VerificationFailedException();
 //                System.out.println("Gym Owner verification failed");
             }
-
-            System.out.println("---------------------------------");
-
         }catch(VerificationFailedException ex){
             System.out.println("Gym Owner "+ex.getMessage());
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return "Failed";
     }
 
     @Override
-    public void verifyGyms(int id) {
+    public String verifyGyms(int id) {
         PreparedStatement preparedStatement = null;
         conn = DatabaseConnector.getConnection();
         try {
@@ -179,19 +204,19 @@ public class AdminDAOImplementation implements AdminDAOInterface {
 
             if (stats > 0) {
                 System.out.println("Verified Gym successfully");
+                return "Success";
             } else {
                 throw new VerificationFailedException();
 //                System.out.println("Gym Owner verification failed");
             }
 
-            System.out.println("---------------------------------");
-
         }catch(VerificationFailedException ex){
-            System.out.println("Gym "+ex.getMessage());
+            System.out.println("Gym "+ ex.getMessage());
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());;
         }
+        return "Failed";
     }
 
     @Override

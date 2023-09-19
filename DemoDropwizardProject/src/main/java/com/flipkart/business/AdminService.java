@@ -2,6 +2,7 @@ package com.flipkart.business;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.User;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public interface AdminService {
 
+    //public void createAdmin();
     /**
      * @author shikha.rai1
      * This function lists all the Gym Owners
@@ -19,27 +21,27 @@ public interface AdminService {
      * @author shikha.rai1
      * This function lists all the Gyms
      */
-    public void viewGyms();
+    public List<Gym> viewGyms();
 
     /**
      * @author shikha.rai1
      * This function all the Users
      */
-    public void viewUsers();
+    public List<User> viewUsers();
 
     /**
      * @author shikha.rai1
      * This function verifies the Gym with given gymId
      * @param gymId
      */
-    public void verifyGym(int gymId);
+    public String verifyGym(int gymId);
 
     /**
      * @author shikha.rai1
      * This method verifies the Gym Owner with given GymOwnerId
      * @param gymOwnerId
      */
-    public void verifyGymOwner(int gymOwnerId);
+    public String verifyGymOwner(int gymOwnerId);
 
     /**
      * @author shikha.rai1

@@ -1,10 +1,12 @@
 package com.flipkart.business;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.User;
 import com.flipkart.dao.AdminDAOImplementation;
 import com.flipkart.dao.AdminDAOInterface;
 
@@ -16,8 +18,6 @@ public class AdminServiceOperation implements AdminService{
 
 	/**
 	 * This function lists all the Gym Owners
-	 *
-	 * @return
 	 */
 	@Override
 	public List<GymOwner> viewGymOwners() {
@@ -28,16 +28,16 @@ public class AdminServiceOperation implements AdminService{
 	 * This function lists all the Gyms
 	 */
 	@Override
-	public void viewGyms() {
-		adminDaoInterface.viewGyms();
+	public List<Gym> viewGyms() {
+		return adminDaoInterface.viewGyms();
 	}
 
 	/**
 	 * This function all the Users
 	 */
 	@Override
-	public void viewUsers() {
-		adminDaoInterface.viewUsers();
+	public List<User> viewUsers() {
+		return adminDaoInterface.viewUsers();
 	}
 
 	/**
@@ -45,9 +45,9 @@ public class AdminServiceOperation implements AdminService{
 	 * @param gymId
 	 */
 	@Override
-	public void verifyGym(int gymId) {
+	public String verifyGym(int gymId) {
 		// TODO Auto-generated method stub
-		adminDaoInterface.verifyGyms(gymId);
+		return adminDaoInterface.verifyGyms(gymId);
 	}
 
 	/**
@@ -55,9 +55,9 @@ public class AdminServiceOperation implements AdminService{
 	 * @param gymOwnerId
 	 */
 	@Override
-	public void verifyGymOwner(int gymOwnerId) {
+	public String verifyGymOwner(int gymOwnerId) {
 		// TODO Auto-generated method stub
-		adminDaoInterface.verifyGymOwners(gymOwnerId);
+		return adminDaoInterface.verifyGymOwners(gymOwnerId);
 
 	}
 
